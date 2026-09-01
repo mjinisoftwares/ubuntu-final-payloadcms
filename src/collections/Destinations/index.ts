@@ -21,8 +21,10 @@ import { CallToAction } from '@/blocks/CallToAction/config'
 import { FAQsBlock } from '@/blocks/FAQBlock/config'
 import { PricingBlock } from '@/blocks/PricingBlock/config'
 import { ReviewsBlock } from '@/blocks/ReviewsBlock/config'
-import { DestinationArchive } from '@/blocks/DestinationArchiveBlock/config'
 import { seoFields } from '@/fields/seo'
+import { DestinationArchiveBlock } from '@/blocks/DestinationArchiveBlock/config'
+import { PricingArchiveBlock } from '@/blocks/PricingArchiveBlock/config'
+import { FleetArchiveBlock } from '@/blocks/FleetArchiveBlock/config'
 
 export const Destinations: CollectionConfig = {
   slug: 'destinations',
@@ -150,9 +152,18 @@ export const Destinations: CollectionConfig = {
           required: true,
           defaultValue: 'mixed-highway-and-offroad',
           options: [
-            { label: 'All-Weather Smooth Tarmac (2WD & Buses Suitable)', value: 'all-weather-tarmac' },
-            { label: 'Mixed Highway & Off-Road / Murram (4x4 or High Clearance Recommended)', value: 'mixed-highway-and-offroad' },
-            { label: 'Rough Terrain / Game Reserve Tracks (Strictly 4x4 Required)', value: 'rough-terrain-4x4-required' },
+            {
+              label: 'All-Weather Smooth Tarmac (2WD & Buses Suitable)',
+              value: 'all-weather-tarmac',
+            },
+            {
+              label: 'Mixed Highway & Off-Road / Murram (4x4 or High Clearance Recommended)',
+              value: 'mixed-highway-and-offroad',
+            },
+            {
+              label: 'Rough Terrain / Game Reserve Tracks (Strictly 4x4 Required)',
+              value: 'rough-terrain-4x4-required',
+            },
           ],
           admin: {
             width: '50%',
@@ -238,7 +249,17 @@ export const Destinations: CollectionConfig = {
                   ...defaultFeatures,
                   HeadingFeature({ enabledHeadingSizes: ['h2', 'h3', 'h4'] }),
                   BlocksFeature({
-                    blocks: [Banner, MediaBlock, Content, FAQsBlock, PricingBlock, FeatureCards, CallToAction, ReviewsBlock, DestinationArchive],
+                    blocks: [
+                      Banner,
+                      MediaBlock,
+                      Content,
+                      FAQsBlock,
+                      PricingBlock,
+                      FeatureCards,
+                      CallToAction,
+                      ReviewsBlock,
+                      DestinationArchiveBlock,
+                    ],
                   }),
                   FixedToolbarFeature(),
                   InlineToolbarFeature(),
@@ -259,7 +280,9 @@ export const Destinations: CollectionConfig = {
                 FeatureCards,
                 ReviewsBlock,
                 Banner,
-                DestinationArchive,
+                DestinationArchiveBlock,
+                PricingArchiveBlock,
+                FleetArchiveBlock,
               ],
               admin: {
                 initCollapsed: true,

@@ -254,6 +254,9 @@ export interface Page {
     | ReviewsBlock
     | BannerBlock
     | UsefulLinksBlock
+    | DestinationArchiveBlock
+    | PricingArchiveBlock
+    | FleetArchiveBlock
   )[];
   meta?: {
     title?: string | null;
@@ -1021,6 +1024,9 @@ export interface Service {
         | ReviewsBlock
         | BannerBlock
         | UsefulLinksBlock
+        | DestinationArchiveBlock
+        | PricingArchiveBlock
+        | FleetArchiveBlock
       )[]
     | null;
   meta?: {
@@ -1119,6 +1125,22 @@ export interface Fleet {
     };
     [k: string]: unknown;
   } | null;
+  layout?:
+    | (
+        | CallToActionBlock
+        | ContentBlock
+        | MediaBlock
+        | FAQsBlock
+        | PricingBlock
+        | FeatureCards
+        | ReviewsBlock
+        | BannerBlock
+        | ServiceArchiveBlock
+        | DestinationArchiveBlock
+        | PricingArchiveBlock
+        | FleetArchiveBlock
+      )[]
+    | null;
   meta?: {
     title?: string | null;
     /**
@@ -1136,6 +1158,33 @@ export interface Fleet {
   updatedAt: string;
   createdAt: string;
   _status?: ('draft' | 'published') | null;
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "PricingBlock".
+ */
+export interface PricingBlock {
+  title?: string | null;
+  subTitle?: string | null;
+  description?: string | null;
+  populateBy?: ('dynamic' | 'selection') | null;
+  /**
+   * Filter rates tied to this service.
+   */
+  service?: (number | null) | Service;
+  /**
+   * Filter rates tied to this vehicle.
+   */
+  fleet?: (number | null) | Fleet;
+  /**
+   * Filter rates tied to this destination.
+   */
+  destination?: (number | null) | Destination;
+  limit?: number | null;
+  selectedDocs?: (number | Pricing)[] | null;
+  id?: string | null;
+  blockName?: string | null;
+  blockType: 'pricingBlock';
 }
 /**
  * This interface was referenced by `Config`'s JSON-Schema
@@ -1201,6 +1250,8 @@ export interface Destination {
         | ReviewsBlock
         | BannerBlock
         | DestinationArchiveBlock
+        | PricingArchiveBlock
+        | FleetArchiveBlock
       )[]
     | null;
   meta?: {
@@ -1212,89 +1263,6 @@ export interface Destination {
     description?: string | null;
   };
   publishedAt?: string | null;
-  /**
-   * When enabled, the slug will auto-generate from the title field on save and autosave.
-   */
-  generateSlug?: boolean | null;
-  slug: string;
-  updatedAt: string;
-  createdAt: string;
-  _status?: ('draft' | 'published') | null;
-}
-/**
- * This interface was referenced by `Config`'s JSON-Schema
- * via the `definition` "PricingBlock".
- */
-export interface PricingBlock {
-  title?: string | null;
-  subTitle?: string | null;
-  description?: string | null;
-  populateBy?: ('dynamic' | 'selection') | null;
-  /**
-   * Filter rates tied to this service.
-   */
-  service?: (number | null) | Service;
-  /**
-   * Filter rates tied to this vehicle.
-   */
-  fleet?: (number | null) | Fleet;
-  /**
-   * Filter rates tied to this destination.
-   */
-  destination?: (number | null) | Destination;
-  limit?: number | null;
-  selectedDocs?: (number | Pricing)[] | null;
-  id?: string | null;
-  blockName?: string | null;
-  blockType: 'pricingBlock';
-}
-/**
- * This interface was referenced by `Config`'s JSON-Schema
- * via the `definition` "pricing".
- */
-export interface Pricing {
-  id: number;
-  title: string;
-  pricingType: 'route_transfer' | 'fleet_day_rate' | 'service_package' | 'hourly_hire';
-  /**
-   * Link to a specific service offering (optional).
-   */
-  service?: (number | null) | Service;
-  /**
-   * Vehicle assigned for this price.
-   */
-  fleet?: (number | null) | Fleet;
-  /**
-   * Destination or route destination for this rate.
-   */
-  destination?: (number | null) | Destination;
-  origin?: string | null;
-  priceKES: number;
-  priceUSD?: number | null;
-  billingUnit: 'per_day' | 'per_trip_one_way' | 'round_trip' | 'per_person' | 'per_month' | 'per_hour';
-  isPopular?: boolean | null;
-  inclusions?:
-    | {
-        inclusion: string;
-        id?: string | null;
-      }[]
-    | null;
-  exclusions?:
-    | {
-        exclusion: string;
-        id?: string | null;
-      }[]
-    | null;
-  termsAndConditions?: string | null;
-  publishedAt?: string | null;
-  meta?: {
-    title?: string | null;
-    /**
-     * Maximum upload file size: 12MB. Recommended file size for images is <500KB.
-     */
-    image?: (number | null) | Media;
-    description?: string | null;
-  };
   /**
    * When enabled, the slug will auto-generate from the title field on save and autosave.
    */
@@ -1364,21 +1332,9 @@ export interface BannerBlock {
  * via the `definition` "DestinationArchiveBlock".
  */
 export interface DestinationArchiveBlock {
-  introContent?: {
-    root: {
-      type: string;
-      children: {
-        type: any;
-        version: number;
-        [k: string]: unknown;
-      }[];
-      direction: ('ltr' | 'rtl') | null;
-      format: 'left' | 'start' | 'center' | 'right' | 'end' | 'justify' | '';
-      indent: number;
-      version: number;
-    };
-    [k: string]: unknown;
-  } | null;
+  title?: string | null;
+  subTitle?: string | null;
+  description?: string | null;
   populateBy?: ('collection' | 'selection') | null;
   relationTo?: 'destinations' | null;
   limit?: number | null;
@@ -1391,6 +1347,125 @@ export interface DestinationArchiveBlock {
   id?: string | null;
   blockName?: string | null;
   blockType: 'destinationArchive';
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "PricingArchiveBlock".
+ */
+export interface PricingArchiveBlock {
+  title?: string | null;
+  subTitle?: string | null;
+  description?: string | null;
+  populateBy?: ('collection' | 'selection') | null;
+  relationTo?: 'pricing' | null;
+  limit?: number | null;
+  selectedDocs?:
+    | {
+        relationTo: 'pricing';
+        value: number | Pricing;
+      }[]
+    | null;
+  id?: string | null;
+  blockName?: string | null;
+  blockType: 'pricingArchive';
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "pricing".
+ */
+export interface Pricing {
+  id: number;
+  title: string;
+  pricingType: 'route_transfer' | 'fleet_day_rate' | 'service_package' | 'hourly_hire';
+  /**
+   * Link to a specific service offering (optional).
+   */
+  service?: (number | null) | Service;
+  /**
+   * Vehicle assigned for this price.
+   */
+  fleet?: (number | null) | Fleet;
+  /**
+   * Destination or route destination for this rate.
+   */
+  destination?: (number | null) | Destination;
+  origin?: string | null;
+  priceKES: number;
+  priceUSD?: number | null;
+  billingUnit: 'per_day' | 'per_trip_one_way' | 'round_trip' | 'per_person' | 'per_month' | 'per_hour';
+  isPopular?: boolean | null;
+  inclusions?:
+    | {
+        inclusion: string;
+        id?: string | null;
+      }[]
+    | null;
+  exclusions?:
+    | {
+        exclusion: string;
+        id?: string | null;
+      }[]
+    | null;
+  termsAndConditions?: string | null;
+  publishedAt?: string | null;
+  meta?: {
+    title?: string | null;
+    /**
+     * Maximum upload file size: 12MB. Recommended file size for images is <500KB.
+     */
+    image?: (number | null) | Media;
+    description?: string | null;
+  };
+  /**
+   * When enabled, the slug will auto-generate from the title field on save and autosave.
+   */
+  generateSlug?: boolean | null;
+  slug: string;
+  updatedAt: string;
+  createdAt: string;
+  _status?: ('draft' | 'published') | null;
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "FleetArchiveBlock".
+ */
+export interface FleetArchiveBlock {
+  title?: string | null;
+  subTitle?: string | null;
+  description?: string | null;
+  populateBy?: ('collection' | 'selection') | null;
+  relationTo?: 'fleet' | null;
+  limit?: number | null;
+  selectedDocs?:
+    | {
+        relationTo: 'fleet';
+        value: number | Fleet;
+      }[]
+    | null;
+  id?: string | null;
+  blockName?: string | null;
+  blockType: 'fleetArchive';
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "ServiceArchiveBlock".
+ */
+export interface ServiceArchiveBlock {
+  title?: string | null;
+  subTitle?: string | null;
+  description?: string | null;
+  populateBy?: ('collection' | 'selection') | null;
+  relationTo?: 'services' | null;
+  limit?: number | null;
+  selectedDocs?:
+    | {
+        relationTo: 'services';
+        value: number | Service;
+      }[]
+    | null;
+  id?: string | null;
+  blockName?: string | null;
+  blockType: 'serviceArchive';
 }
 /**
  * This interface was referenced by `Config`'s JSON-Schema
@@ -1453,27 +1528,6 @@ export interface SmallFeatureCards {
   id?: string | null;
   blockName?: string | null;
   blockType: 'smallFeatureCards';
-}
-/**
- * This interface was referenced by `Config`'s JSON-Schema
- * via the `definition` "ServiceArchiveBlock".
- */
-export interface ServiceArchiveBlock {
-  title?: string | null;
-  subTitle?: string | null;
-  description?: string | null;
-  populateBy?: ('collection' | 'selection') | null;
-  relationTo?: 'services' | null;
-  limit?: number | null;
-  selectedDocs?:
-    | {
-        relationTo: 'services';
-        value: number | Service;
-      }[]
-    | null;
-  id?: string | null;
-  blockName?: string | null;
-  blockType: 'serviceArchive';
 }
 /**
  * This interface was referenced by `Config`'s JSON-Schema
@@ -2248,6 +2302,9 @@ export interface PagesSelect<T extends boolean = true> {
         reviewsBlock?: T | ReviewsBlockSelect<T>;
         banner?: T | BannerBlockSelect<T>;
         usefulLinksBlock?: T | UsefulLinksBlockSelect<T>;
+        destinationArchive?: T | DestinationArchiveBlockSelect<T>;
+        pricingArchive?: T | PricingArchiveBlockSelect<T>;
+        fleetArchive?: T | FleetArchiveBlockSelect<T>;
       };
   meta?:
     | T
@@ -2568,6 +2625,51 @@ export interface UsefulLinksBlockSelect<T extends boolean = true> {
 }
 /**
  * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "DestinationArchiveBlock_select".
+ */
+export interface DestinationArchiveBlockSelect<T extends boolean = true> {
+  title?: T;
+  subTitle?: T;
+  description?: T;
+  populateBy?: T;
+  relationTo?: T;
+  limit?: T;
+  selectedDocs?: T;
+  id?: T;
+  blockName?: T;
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "PricingArchiveBlock_select".
+ */
+export interface PricingArchiveBlockSelect<T extends boolean = true> {
+  title?: T;
+  subTitle?: T;
+  description?: T;
+  populateBy?: T;
+  relationTo?: T;
+  limit?: T;
+  selectedDocs?: T;
+  id?: T;
+  blockName?: T;
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "FleetArchiveBlock_select".
+ */
+export interface FleetArchiveBlockSelect<T extends boolean = true> {
+  title?: T;
+  subTitle?: T;
+  description?: T;
+  populateBy?: T;
+  relationTo?: T;
+  limit?: T;
+  selectedDocs?: T;
+  id?: T;
+  blockName?: T;
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
  * via the `definition` "posts_select".
  */
 export interface PostsSelect<T extends boolean = true> {
@@ -2637,6 +2739,9 @@ export interface ServicesSelect<T extends boolean = true> {
         reviewsBlock?: T | ReviewsBlockSelect<T>;
         banner?: T | BannerBlockSelect<T>;
         usefulLinksBlock?: T | UsefulLinksBlockSelect<T>;
+        destinationArchive?: T | DestinationArchiveBlockSelect<T>;
+        pricingArchive?: T | PricingArchiveBlockSelect<T>;
+        fleetArchive?: T | FleetArchiveBlockSelect<T>;
       };
   meta?:
     | T
@@ -2694,6 +2799,22 @@ export interface FleetSelect<T extends boolean = true> {
         id?: T;
       };
   content?: T;
+  layout?:
+    | T
+    | {
+        cta?: T | CallToActionBlockSelect<T>;
+        content?: T | ContentBlockSelect<T>;
+        mediaBlock?: T | MediaBlockSelect<T>;
+        faqsBlock?: T | FAQsBlockSelect<T>;
+        pricingBlock?: T | PricingBlockSelect<T>;
+        featureCards?: T | FeatureCardsSelect<T>;
+        reviewsBlock?: T | ReviewsBlockSelect<T>;
+        banner?: T | BannerBlockSelect<T>;
+        serviceArchive?: T | ServiceArchiveBlockSelect<T>;
+        destinationArchive?: T | DestinationArchiveBlockSelect<T>;
+        pricingArchive?: T | PricingArchiveBlockSelect<T>;
+        fleetArchive?: T | FleetArchiveBlockSelect<T>;
+      };
   meta?:
     | T
     | {
@@ -2756,6 +2877,8 @@ export interface DestinationsSelect<T extends boolean = true> {
         reviewsBlock?: T | ReviewsBlockSelect<T>;
         banner?: T | BannerBlockSelect<T>;
         destinationArchive?: T | DestinationArchiveBlockSelect<T>;
+        pricingArchive?: T | PricingArchiveBlockSelect<T>;
+        fleetArchive?: T | FleetArchiveBlockSelect<T>;
       };
   meta?:
     | T
@@ -2770,19 +2893,6 @@ export interface DestinationsSelect<T extends boolean = true> {
   updatedAt?: T;
   createdAt?: T;
   _status?: T;
-}
-/**
- * This interface was referenced by `Config`'s JSON-Schema
- * via the `definition` "DestinationArchiveBlock_select".
- */
-export interface DestinationArchiveBlockSelect<T extends boolean = true> {
-  introContent?: T;
-  populateBy?: T;
-  relationTo?: T;
-  limit?: T;
-  selectedDocs?: T;
-  id?: T;
-  blockName?: T;
 }
 /**
  * This interface was referenced by `Config`'s JSON-Schema

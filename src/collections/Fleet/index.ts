@@ -21,6 +21,10 @@ import { CallToAction } from '@/blocks/CallToAction/config'
 import { FAQsBlock } from '@/blocks/FAQBlock/config'
 import { PricingBlock } from '@/blocks/PricingBlock/config'
 import { ReviewsBlock } from '@/blocks/ReviewsBlock/config'
+import { ServiceArchiveBlock } from '@/blocks/ServiceArchiveBlock/config'
+import { DestinationArchiveBlock } from '@/blocks/DestinationArchiveBlock/config'
+import { PricingArchiveBlock } from '@/blocks/PricingArchiveBlock/config'
+import { FleetArchiveBlock } from '@/blocks/FleetArchiveBlock/config'
 import { seoFields } from '@/fields/seo'
 
 export const Fleet: CollectionConfig = {
@@ -316,6 +320,27 @@ export const Fleet: CollectionConfig = {
                 ],
               }),
               label: false,
+            },
+            {
+              name: 'layout',
+              type: 'blocks',
+              blocks: [
+                CallToAction,
+                Content,
+                MediaBlock,
+                FAQsBlock,
+                PricingBlock,
+                FeatureCards,
+                ReviewsBlock,
+                Banner,
+                ServiceArchiveBlock,
+                DestinationArchiveBlock,
+                PricingArchiveBlock,
+                FleetArchiveBlock,
+              ],
+              admin: {
+                initCollapsed: true,
+              },
             },
           ],
         },

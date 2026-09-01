@@ -1,16 +1,23 @@
-import type { Destination, DestinationArchiveBlock as DestinationArchiveBlockProps } from '@/payload-types'
+import type { Destination, DestinationArchiveBlock } from '@/payload-types'
+
 import configPromise from '@payload-config'
 import { getPayload } from 'payload'
 import React from 'react'
-import RichText from '@/components/RichText'
-import { DestinationCollectionArchive } from '@/components/DestinationCollectionArchive'
 
-export const DestinationArchiveBlockComponent: React.FC<
-  DestinationArchiveBlockProps & {
-    id?: string
-  }
-> = async (props) => {
-  const { id, introContent, limit: limitFromProps, populateBy, selectedDocs, relationTo } = props
+import { DestinationCollectionArchive } from '@/components/DestinationCollectionArchive'
+import Title from '@/components/Title'
+
+export const DestinationArchiveBlockComponent: React.FC<DestinationArchiveBlock> = async (props) => {
+  const {
+    id,
+    limit: limitFromProps,
+    populateBy,
+    selectedDocs,
+    relationTo,
+    title,
+    subTitle,
+    description,
+  } = props
 
   const limit = limitFromProps || 3
 
@@ -19,35 +26,38 @@ export const DestinationArchiveBlockComponent: React.FC<
   if (populateBy === 'collection') {
     const payload = await getPayload({ config: configPromise })
 
-    const flattenedDestinations = await payload.find({
-      collection: 'destinations',
+    const fetchedDestinations = await payload.find({
+      collection: (relationTo as any) ?? 'destinations',
       depth: 1,
       limit,
-      ...(relationTo ? { where: { _status: { equals: 'published' } } } : {}),
     })
 
-    destinations = flattenedDestinations.docs
+    destinations = fetchedDestinations.docs as Destination[]
   } else {
     if (selectedDocs?.length) {
-      const filteredSelectedDestinations = selectedDocs.map((doc) => {
-        if (typeof doc.value === 'object') return doc.value
-        return null
-      }) as Destination[]
+      const filteredSelectedDestinations = selectedDocs
+        .map((destination: any) => {
+          if (typeof destination === 'object' && destination !== null) {
+            return destination.value && typeof destination.value === 'object' ? destination.value : destination
+          }
+          return null
+        })
+        .filter((doc): doc is Destination => Boolean(doc && typeof doc === 'object' && doc.id))
 
-      destinations = filteredSelectedDestinations.filter(Boolean)
+      destinations = filteredSelectedDestinations
     }
   }
 
   return (
-    <div className="my-16" id={`block-${id}`}>
-      {introContent && (
-        <div className="container mb-8">
-          <RichText className="ml-0 max-w-[48rem]" data={introContent} enableGutter={false} />
-        </div>
-      )}
-      <div className="container">
-        <DestinationCollectionArchive destinations={destinations} relationTo="destinations" />
+    <div id={`block-${id}`} className="container border py-20 bg-accent/5">
+      <div className="max-w-6xl mx-auto md:mt-8">
+        <Title
+          title={title as string}
+          subTitle={subTitle as string}
+          description={description as string}
+        />
       </div>
+      <DestinationCollectionArchive destinations={destinations} relationTo={'destinations'} />
     </div>
   )
 }

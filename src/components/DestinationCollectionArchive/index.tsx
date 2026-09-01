@@ -1,9 +1,30 @@
 import React from 'react'
 import Link from 'next/link'
-import { ArrowRight, MapPin, Compass, Clock, CheckCircle } from 'lucide-react'
+import {
+  ArrowRight,
+  Globe,
+  Laptop,
+  Rocket,
+  Settings,
+  Shield,
+  Smartphone,
+  Sparkles,
+  Zap,
+} from 'lucide-react'
+import type { LucideIcon } from 'lucide-react'
 import { Media } from '@/components/Media'
 import type { Destination } from '@/payload-types'
-import { Badge } from '@/components/ui/badge'
+
+const destinationIconMap: Record<string, LucideIcon> = {
+  Icon1: Zap,
+  Laptop: Laptop,
+  Globe: Globe,
+  Shield: Shield,
+  Sparkles: Sparkles,
+  Smartphone: Smartphone,
+  Settings: Settings,
+  Rocket: Rocket,
+}
 
 export interface DestinationCollectionArchiveProps {
   destinations: Destination[]
@@ -17,78 +38,71 @@ export const DestinationCollectionArchive: React.FC<DestinationCollectionArchive
   if (!destinations || !destinations.length) return null
 
   return (
-    <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 mt-12">
+    <section className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 mt-16 max-w-7xl mx-auto">
       {destinations.map((destination) => {
+        const destAny = destination as any
+        const Icon = (destAny.icon && destinationIconMap[destAny.icon]) || Sparkles
         const href = `/${relationTo}/${destination.slug}`
+        const img = destAny.heroImage || destination.featuredImage
 
         return (
           <Link
             key={destination.id}
             href={href}
-            className="group relative flex flex-col rounded-2xl border border-border/70 bg-card shadow-sm transition-all duration-300 hover:-translate-y-1 hover:shadow-xl hover:border-primary/40 overflow-hidden"
+            className="group relative flex flex-col rounded-2xl border border-border/60 bg-card/60 backdrop-blur-md shadow-sm transition-all duration-300 ease-out hover:-translate-y-1.5 hover:shadow-xl hover:border-primary/30 overflow-hidden"
           >
-            {/* Hero image preview */}
-            {destination.featuredImage && typeof destination.featuredImage === 'object' && (
-              <div className="relative w-full aspect-[4/3] overflow-hidden bg-muted">
+            {/* Hover Glow Effect */}
+            <div className="absolute inset-0 -z-10 bg-gradient-to-br from-primary/5 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
+
+            {/* Hero Image Container */}
+            {img && typeof img === 'object' ? (
+              <div className="relative w-full aspect-video overflow-hidden bg-muted border-b border-border/40">
                 <Media
-                  resource={destination.featuredImage}
+                  resource={img}
                   fill
                   className="h-full w-full object-cover"
-                  imgClassName="h-full w-full object-cover transition-transform duration-500 group-hover:scale-105"
+                  imgClassName="h-full w-full object-cover transition-transform duration-700 ease-out group-hover:scale-105"
                 />
-                
-                {/* Overlay Badge */}
-                {destination.region && (
-                  <div className="absolute top-4 left-4">
-                    <Badge variant="secondary" className="bg-background/80 backdrop-blur-sm text-foreground shadow-sm">
-                      {destination.region.replace(/-/g, ' ')}
-                    </Badge>
-                  </div>
-                )}
+              </div>
+            ) : (
+              /* Fallback Icon Container when no image exists */
+              <div className="pt-6">
+                <div className="w-12 h-12 rounded-xl bg-primary/10 text-primary flex items-center justify-center group-hover:bg-primary group-hover:text-primary-foreground transition-all duration-300 shadow-inner">
+                  <Icon className="w-5 h-5 transition-transform duration-300 group-hover:scale-110" />
+                </div>
               </div>
             )}
 
-            <div className="p-6 flex flex-col flex-1">
-              {/* Title & summary */}
-              <div className="flex-1 space-y-3">
-                <h3 className="font-bold text-xl text-foreground group-hover:text-primary transition-colors">
-                  {destination.title}
-                </h3>
-                
-                <div className="flex items-center gap-2 text-xs font-semibold uppercase tracking-wider text-primary">
-                  <MapPin className="w-3.5 h-3.5" />
-                  {destination.distanceFromNairobiKm} KM from Nairobi
-                </div>
+            {/* Content Area */}
+            <div className="flex-1 flex flex-col p-6 space-y-3">
+              {destination.subTitle && (
+                <span className="text-xs font-bold tracking-widest uppercase text-muted-foreground/80">
+                  {destination.subTitle}
+                </span>
+              )}
 
-                {destination.summary && (
-                  <p className="text-sm text-muted-foreground line-clamp-2 leading-relaxed mt-2">
-                    {destination.summary}
-                  </p>
-                )}
-              </div>
+              <h3 className="font-semibold text-xl tracking-tight text-foreground transition-colors group-hover:text-primary">
+                {destination.title}
+              </h3>
 
-              {/* Stats / Info Row */}
-              <div className="grid grid-cols-2 gap-2 mt-5 pt-4 border-t border-border/50 text-xs text-muted-foreground">
-                <div className="flex items-center gap-1.5">
-                  <Clock className="w-3.5 h-3.5 text-primary" />
-                  <span className="truncate">{destination.estimatedTravelTime}</span>
-                </div>
-                <div className="flex items-center gap-1.5">
-                  <Compass className="w-3.5 h-3.5 text-primary" />
-                  <span className="truncate capitalize">{destination.roadCondition?.replace(/-/g, ' ')}</span>
-                </div>
-              </div>
+              {destination.summary && (
+                <p className="text-sm text-muted-foreground line-clamp-3 leading-relaxed pt-1">
+                  {destination.summary}
+                </p>
+              )}
+            </div>
 
-              {/* Read more footer */}
-              <div className="mt-5 flex items-center justify-between text-sm font-semibold text-primary">
-                <span>View Route Guide</span>
-                <ArrowRight className="w-4 h-4 group-hover:translate-x-1 transition-transform" />
+            {/* Interactive Clean Footer */}
+            <div className="px-6 pb-6 pt-2 flex items-center justify-between text-sm font-medium text-foreground/80 border-t border-border/40 bg-muted/20 group-hover:bg-muted/40 transition-colors">
+              <span className="group-hover:text-primary transition-colors">Explore Destination</span>
+              <div className="w-8 h-8 rounded-full bg-secondary/50 flex items-center justify-center border border-border/50 group-hover:border-primary/30 group-hover:bg-primary group-hover:text-primary-foreground transition-all duration-300 group-hover:translate-x-1">
+                <ArrowRight className="w-4 h-4" />
               </div>
             </div>
           </Link>
         )
       })}
-    </div>
+    </section>
   )
 }
 

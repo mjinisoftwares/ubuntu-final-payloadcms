@@ -11,6 +11,8 @@ import { mergeOpenGraph } from '@/utilities/mergeOpenGraph'
 
 import './globals.css'
 import { getServerSideURL } from '@/utilities/getURL'
+import Script from 'next/script'
+import GoogleMap from '@/components/Maps'
 
 export default async function RootLayout({ children }: { children: React.ReactNode }) {
   return (
@@ -23,7 +25,9 @@ export default async function RootLayout({ children }: { children: React.ReactNo
       <body>
         <Header />
         {children}
+        <GoogleMap />
         <Footer />
+        <Script src="https://elfsightcdn.com/platform.js" strategy="afterInteractive" />
       </body>
     </html>
   )

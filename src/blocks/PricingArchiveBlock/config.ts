@@ -1,8 +1,8 @@
 import type { Block } from 'payload'
 
-export const DestinationArchiveBlock: Block = {
-  slug: 'destinationArchive',
-  interfaceName: 'DestinationArchiveBlock',
+export const PricingArchiveBlock: Block = {
+  slug: 'pricingArchive',
+  interfaceName: 'PricingArchiveBlock',
   fields: [
     {
       name: 'title',
@@ -40,12 +40,12 @@ export const DestinationArchiveBlock: Block = {
       admin: {
         condition: (_, siblingData) => siblingData.populateBy === 'collection',
       },
-      defaultValue: 'destinations',
+      defaultValue: 'pricing',
       label: 'Collections To Show',
       options: [
         {
-          label: 'Destinations',
-          value: 'destinations',
+          label: 'Pricing',
+          value: 'pricing',
         },
       ],
     },
@@ -68,11 +68,11 @@ export const DestinationArchiveBlock: Block = {
       },
       hasMany: true,
       label: 'Selection',
-      relationTo: ['destinations'],
+      relationTo: ['pricing'],
     },
   ],
   labels: {
-    plural: 'Destination Archives',
-    singular: 'Destination Archive',
+    plural: 'Pricing Archives',
+    singular: 'Pricing Archive',
   },
 }

@@ -31,6 +31,9 @@ import { TeamBlock } from '@/blocks/TeamBlock/config'
 import { ServiceArchiveBlock } from '@/blocks/ServiceArchiveBlock/config'
 import { Archive } from '@/blocks/ArchiveBlock/config'
 import { UsefulLinksBlock } from '@/blocks/UsefulLinksBlock/config'
+import { DestinationArchiveBlock } from '@/blocks/DestinationArchiveBlock/config'
+import { PricingArchiveBlock } from '@/blocks/PricingArchiveBlock/config'
+import { FleetArchiveBlock } from '@/blocks/FleetArchiveBlock/config'
 import { seoFields } from '@/fields/seo'
 
 export const Services: CollectionConfig<'services'> = {
@@ -247,6 +250,9 @@ export const Services: CollectionConfig<'services'> = {
                 ReviewsBlock,
                 Banner,
                 UsefulLinksBlock,
+                DestinationArchiveBlock,
+                PricingArchiveBlock,
+                FleetArchiveBlock,
               ],
               admin: {
                 initCollapsed: true,

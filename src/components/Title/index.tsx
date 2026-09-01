@@ -21,23 +21,23 @@ export const Title: React.FC<TitleProps> = ({
   return (
     <div
       className={cn(
-        'space-y-3',
+        'space-y-3 py-8 border-b border-border',
         align === 'center' && 'text-center mx-auto',
         align === 'right' && 'text-right',
         align === 'left' && 'text-left',
         className,
       )}
     >
-      {subTitle && (
-        <p className="text-sm font-semibold uppercase tracking-widest text-primary">{subTitle}</p>
-      )}
-      <hr className="bg-secondary w-1/4 h-1 rounded-full mt-4 mx-auto" />
-
       {title && (
         <h2 className="text-3xl font-bold tracking-tight text-primary sm:text-4xl lg:text-5xl leading-[1.1]">
           {title}
         </h2>
       )}
+
+      {subTitle && (
+        <p className="text-sm font-semibold uppercase tracking-widest text-primary">{subTitle}</p>
+      )}
+      <hr className="bg-secondary w-1/4 h-1 rounded-full mt-4 mx-auto" />
 
       {description && (
         <p className="max-w-3xl text-base text-muted-foreground sm:text-lg leading-relaxed mx-auto">

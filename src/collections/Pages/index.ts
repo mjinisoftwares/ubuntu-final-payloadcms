@@ -19,6 +19,9 @@ import { ServiceArchiveBlock } from '@/blocks/ServiceArchiveBlock/config'
 import { TitleBlock } from '@/blocks/TitleBlock/config'
 import { ReviewsBlock } from '@/blocks/ReviewsBlock/config'
 import { UsefulLinksBlock } from '@/blocks/UsefulLinksBlock/config'
+import { DestinationArchiveBlock } from '@/blocks/DestinationArchiveBlock/config'
+import { PricingArchiveBlock } from '@/blocks/PricingArchiveBlock/config'
+import { FleetArchiveBlock } from '@/blocks/FleetArchiveBlock/config'
 import { hero } from '@/heros/config'
 import { slugField } from 'payload'
 import { populatePublishedAt } from '../../hooks/populatePublishedAt'
@@ -102,6 +105,9 @@ export const Pages: CollectionConfig<'pages'> = {
                 ReviewsBlock,
                 Banner,
                 UsefulLinksBlock,
+                DestinationArchiveBlock,
+                PricingArchiveBlock,
+                FleetArchiveBlock,
               ],
               required: true,
               admin: {

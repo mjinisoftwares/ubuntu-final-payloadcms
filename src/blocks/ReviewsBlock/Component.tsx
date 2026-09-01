@@ -13,10 +13,11 @@ interface ReviewsBlockProps {
 
 export const ReviewsBlockComponent: React.FC<ReviewsBlockProps> = () => {
   return (
-    <div className="mx-auto max-w-7xl px-2 py-20">
-      <FacebookReviews />
-      <GoogleReviews />
-    </div>
+    <section className="my-10">
+      <div className="container mx-auto max-w-7xl">
+        <GoogleReviews />
+      </div>
+    </section>
   )
 }
 

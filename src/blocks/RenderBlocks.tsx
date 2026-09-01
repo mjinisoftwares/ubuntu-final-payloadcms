@@ -20,6 +20,8 @@ import { TeamBlockComponent } from '@/blocks/TeamBlock/Component'
 import { TitleBlockComponent } from '@/blocks/TitleBlock/Component'
 import { UsefulLinksBlockComponent } from '@/blocks/UsefulLinksBlock/Component'
 import { DestinationArchiveBlockComponent } from '@/blocks/DestinationArchiveBlock/Component'
+import { PricingArchiveBlockComponent } from '@/blocks/PricingArchiveBlock/Component'
+import { FleetArchiveBlockComponent } from '@/blocks/FleetArchiveBlock/Component'
 
 const blockComponents: Record<string, React.ComponentType<any>> = {
   about: AboutBlock,
@@ -41,6 +43,8 @@ const blockComponents: Record<string, React.ComponentType<any>> = {
   titleBlock: TitleBlockComponent,
   usefulLinksBlock: UsefulLinksBlockComponent,
   destinationArchive: DestinationArchiveBlockComponent,
+  pricingArchive: PricingArchiveBlockComponent,
+  fleetArchive: FleetArchiveBlockComponent,
 }
 
 export const RenderBlocks: React.FC<{
