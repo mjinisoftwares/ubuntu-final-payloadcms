@@ -9,9 +9,10 @@ import { GenerateTitle, GenerateURL } from '@payloadcms/plugin-seo/types'
 import { FixedToolbarFeature, HeadingFeature, lexicalEditor } from '@payloadcms/richtext-lexical'
 import { searchFields } from '@/search/fieldOverrides'
 import { beforeSyncWithSearch } from '@/search/beforeSync'
-
+import { s3Storage } from '@payloadcms/storage-s3'
 import { Page, Post } from '@/payload-types'
 import { getServerSideURL } from '@/utilities/getURL'
+import { mcpPlugin } from '@payloadcms/plugin-mcp'
 
 const generateTitle: GenerateTitle<Post | Page> = ({ doc }) => {
   return doc?.title ? `${doc.title} | Payload Website Template` : 'Payload Website Template'
@@ -24,6 +25,89 @@ const generateURL: GenerateURL<Post | Page> = ({ doc }) => {
 }
 
 export const plugins: Plugin[] = [
+  mcpPlugin({
+    collections: {
+      pages: {
+        enabled: true,
+      },
+      posts: {
+        enabled: true,
+      },
+      services: {
+        enabled: true,
+      },
+      fleet: {
+        enabled: true,
+      },
+      destinations: {
+        enabled: true,
+      },
+      pricing: {
+        enabled: true,
+      },
+      faqs: {
+        enabled: true,
+      },
+      team: {
+        enabled: true,
+      },
+      media: {
+        enabled: true,
+      },
+      categories: {
+        enabled: true,
+      },
+      users: {
+        enabled: true,
+      },
+      forms: {
+        enabled: true,
+      },
+      'form-submissions': {
+        enabled: true,
+      },
+      search: {
+        enabled: true,
+      },
+      redirects: {
+        enabled: true,
+      },
+    },
+    globals: {
+      header: {
+        enabled: true,
+      },
+      footer: {
+        enabled: true,
+      },
+      'agency-settings': {
+        enabled: true,
+      },
+    },
+  }),
+
+  s3Storage({
+    collections: {
+      media: {
+        disableLocalStorage: true,
+        disablePayloadAccessControl: true,
+        generateFileURL: ({ filename }) => {
+          return `${process.env.S3_BUCKET_URL}/${process.env.S3_BUCKET}/${filename}`
+        },
+      },
+    },
+    bucket: process.env.S3_BUCKET || '',
+    config: {
+      credentials: {
+        accessKeyId: process.env.S3_ACCESS_KEY_ID || '',
+        secretAccessKey: process.env.S3_SECRET_ACCESS_KEY || '',
+      },
+      region: 'auto',
+      endpoint: process.env.S3_ENDPOINT || '',
+      forcePathStyle: true,
+    },
+  }),
+
   redirectsPlugin({
     collections: ['pages', 'posts'],
     overrides: {

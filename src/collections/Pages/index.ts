@@ -7,6 +7,18 @@ import { CallToAction } from '../../blocks/CallToAction/config'
 import { Content } from '../../blocks/Content/config'
 import { FormBlock } from '../../blocks/Form/config'
 import { MediaBlock } from '../../blocks/MediaBlock/config'
+import { Banner } from '../../blocks/Banner/config'
+import { About } from '@/blocks/AboutBlock/config'
+import { CarouselBlock } from '@/blocks/CarouselBlock/config'
+import { FAQsBlock } from '@/blocks/FAQBlock/config'
+import { PricingBlock } from '@/blocks/PricingBlock/config'
+import { FeatureCards } from '@/blocks/FeatureCards/config'
+import { SmallFeatureCards } from '@/blocks/SmallFeatureCards/config'
+import { TeamBlock } from '@/blocks/TeamBlock/config'
+import { ServiceArchiveBlock } from '@/blocks/ServiceArchiveBlock/config'
+import { TitleBlock } from '@/blocks/TitleBlock/config'
+import { ReviewsBlock } from '@/blocks/ReviewsBlock/config'
+import { UsefulLinksBlock } from '@/blocks/UsefulLinksBlock/config'
 import { hero } from '@/heros/config'
 import { slugField } from 'payload'
 import { populatePublishedAt } from '../../hooks/populatePublishedAt'
@@ -72,7 +84,25 @@ export const Pages: CollectionConfig<'pages'> = {
             {
               name: 'layout',
               type: 'blocks',
-              blocks: [CallToAction, Content, MediaBlock, Archive, FormBlock],
+              blocks: [
+                CallToAction,
+                Content,
+                MediaBlock,
+                Archive,
+                FormBlock,
+                About,
+                CarouselBlock,
+                FAQsBlock,
+                PricingBlock,
+                FeatureCards,
+                TeamBlock,
+                SmallFeatureCards,
+                ServiceArchiveBlock,
+                TitleBlock,
+                ReviewsBlock,
+                Banner,
+                UsefulLinksBlock,
+              ],
               required: true,
               admin: {
                 initCollapsed: true,

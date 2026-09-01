@@ -14,12 +14,25 @@ export const Categories: CollectionConfig = {
   },
   admin: {
     useAsTitle: 'title',
+    defaultColumns: ['title', 'slug', 'updatedAt'],
   },
   fields: [
     {
       name: 'title',
       type: 'text',
       required: true,
+    },
+    {
+      name: 'description',
+      type: 'textarea',
+      admin: {
+        description: 'Brief overview of this broad category pillar (e.g. Corporate Transport, Safari & Tours, Airport Transfers, Private Hire).',
+      },
+    },
+    {
+      name: 'featuredImage',
+      type: 'upload',
+      relationTo: 'media',
     },
     slugField({
       position: undefined,

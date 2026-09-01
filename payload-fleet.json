@@ -1,0 +1,1253 @@
+[
+  {
+    "title": "Saloon Car Hire Nairobi",
+    "slug": "saloon-car-hire-nairobi",
+    "subTitle": "Economical, comfortable sedans for city commuting and airport transfers",
+    "vehicleType": "saloon-car",
+    "summary": "Our saloon cars are the most economical option in the fleet — compact, fuel-efficient sedans suited to city driving, solo travellers or couples, and short point-to-point trips like airport runs or business meetings.",
+    "passengerCapacity": 4,
+    "luggageCapacity": 2,
+    "baseDayRateKES": 4500,
+    "baseDayRateUSD": 35,
+    "specifications": {
+      "is4WD": false,
+      "hasPopUpRoof": false,
+      "hasAircon": true,
+      "hasWifi": false,
+      "hasChargingPorts": true,
+      "hasCoolerBox": false,
+      "hasRadioCommunication": false,
+      "transmission": "automatic",
+      "fuelType": "petrol"
+    },
+    "idealFor": [
+      "airport-transfers",
+      "corporate-transport"
+    ],
+    "featuresList": [
+      {
+        "feature": "Modern fuel-efficient engine with smooth automatic transmission"
+      },
+      {
+        "feature": "Full climate control air conditioning"
+      },
+      {
+        "feature": "USB charging ports for mobile devices"
+      },
+      {
+        "feature": "Comfortable cloth or leather seating for up to 4 passengers"
+      },
+      {
+        "feature": "Available with professional chauffeur or self-drive options"
+      }
+    ],
+    "content": {
+      "root": {
+        "type": "root",
+        "format": "",
+        "indent": 0,
+        "version": 1,
+        "direction": "ltr",
+        "children": [
+          {
+            "type": "paragraph",
+            "format": "",
+            "indent": 0,
+            "version": 1,
+            "direction": "ltr",
+            "children": [
+              {
+                "detail": 0,
+                "format": 0,
+                "mode": "normal",
+                "style": "",
+                "text": "Our saloon cars are the most economical option in the fleet — compact, fuel-efficient sedans suited to city driving, solo travellers or couples, and short point-to-point trips like airport runs or business meetings.",
+                "type": "text",
+                "version": 1
+              }
+            ]
+          },
+          {
+            "type": "paragraph",
+            "format": "",
+            "indent": 0,
+            "version": 1,
+            "direction": "ltr",
+            "children": [
+              {
+                "detail": 0,
+                "format": 0,
+                "mode": "normal",
+                "style": "",
+                "text": "Available self-drive or chauffeur-driven, they are the default choice for clients who do not need van-level space but want privacy, reliability, and comfort at an unbeatable rate.",
+                "type": "text",
+                "version": 1
+              }
+            ]
+          }
+        ]
+      }
+    },
+    "meta": {
+      "title": "Saloon Car Hire Nairobi | Sedans for Self-Drive & Chauffeur | Ubuntu Logistics",
+      "description": "Hire a saloon car in Nairobi, self-drive or with a driver. Fuel-efficient, comfortable sedans for city trips, meetings, and airport runs."
+    },
+    "_status": "published"
+  },
+  {
+    "title": "SUV Hire Nairobi",
+    "slug": "suv-hire-nairobi",
+    "subTitle": "Spacious, high-clearance executive SUVs for business and family travel",
+    "vehicleType": "executive-suv",
+    "summary": "Our executive SUVs provide elevated ground clearance, superior cabin space, and premium road comfort for business executives, small families, and trips requiring extra capability on rougher Kenyan roads.",
+    "passengerCapacity": 5,
+    "luggageCapacity": 4,
+    "baseDayRateKES": 10000,
+    "baseDayRateUSD": 80,
+    "specifications": {
+      "is4WD": true,
+      "hasPopUpRoof": false,
+      "hasAircon": true,
+      "hasWifi": true,
+      "hasChargingPorts": true,
+      "hasCoolerBox": true,
+      "hasRadioCommunication": false,
+      "transmission": "automatic",
+      "fuelType": "diesel"
+    },
+    "idealFor": [
+      "vip-executive",
+      "corporate-transport",
+      "airport-transfers",
+      "inter-county"
+    ],
+    "featuresList": [
+      {
+        "feature": "High ground clearance and robust All-Wheel Drive capability"
+      },
+      {
+        "feature": "Plush leather interior with multi-zone automatic climate control"
+      },
+      {
+        "feature": "Onboard high-speed 4G Wi-Fi hotspot and rapid USB charging"
+      },
+      {
+        "feature": "Generous boot capacity for 4 large suitcases"
+      },
+      {
+        "feature": "Experienced, vetted executive chauffeur in uniform"
+      }
+    ],
+    "content": {
+      "root": {
+        "type": "root",
+        "format": "",
+        "indent": 0,
+        "version": 1,
+        "direction": "ltr",
+        "children": [
+          {
+            "type": "paragraph",
+            "format": "",
+            "indent": 0,
+            "version": 1,
+            "direction": "ltr",
+            "children": [
+              {
+                "detail": 0,
+                "format": 0,
+                "mode": "normal",
+                "style": "",
+                "text": "Our SUVs sit between a saloon car and a full passenger van — offering more ground clearance, power, and luggage space without the bulk of a minibus.",
+                "type": "text",
+                "version": 1
+              }
+            ]
+          },
+          {
+            "type": "paragraph",
+            "format": "",
+            "indent": 0,
+            "version": 1,
+            "direction": "ltr",
+            "children": [
+              {
+                "detail": 0,
+                "format": 0,
+                "mode": "normal",
+                "style": "",
+                "text": "They suit small families, executive travel where vehicle prestige matters, and upcountry trips on gravel roads that a standard sedan would struggle with.",
+                "type": "text",
+                "version": 1
+              }
+            ]
+          }
+        ]
+      }
+    },
+    "meta": {
+      "title": "SUV Hire Nairobi | Self-Drive & Chauffeur-Driven SUVs | Ubuntu Logistics",
+      "description": "Hire an SUV in Nairobi for extra space, comfort, and ground clearance. Self-drive or chauffeur-driven, ideal for families and executive travel."
+    },
+    "_status": "published"
+  },
+  {
+    "title": "7 Seater Van Hire Nairobi",
+    "slug": "7-seater-van-hire-nairobi",
+    "subTitle": "Toyota Noah & Voxy passenger vans for families and small group transfers",
+    "vehicleType": "van-shuttle",
+    "summary": "Our 7-seater passenger vans (Toyota Noah and Voxy) deliver flexible seating, sliding door access, and ample luggage room, making them the top choice for family airport pickups and small group day excursions.",
+    "passengerCapacity": 7,
+    "luggageCapacity": 5,
+    "baseDayRateKES": 8000,
+    "baseDayRateUSD": 65,
+    "specifications": {
+      "is4WD": false,
+      "hasPopUpRoof": false,
+      "hasAircon": true,
+      "hasWifi": false,
+      "hasChargingPorts": true,
+      "hasCoolerBox": true,
+      "hasRadioCommunication": false,
+      "transmission": "automatic",
+      "fuelType": "petrol"
+    },
+    "idealFor": [
+      "airport-transfers",
+      "group-excursions",
+      "weddings-events"
+    ],
+    "featuresList": [
+      {
+        "feature": "Configurable 7-seat layout with fold-away rear seats for expanded luggage"
+      },
+      {
+        "feature": "Dual power sliding doors for easy passenger boarding"
+      },
+      {
+        "feature": "Individual overhead air vents and front/rear climate control"
+      },
+      {
+        "feature": "Smooth, quiet ride on city streets and tarmac highways"
+      },
+      {
+        "feature": "Professional driver familiar with all Nairobi hotels, estates, and airports"
+      }
+    ],
+    "content": {
+      "root": {
+        "type": "root",
+        "format": "",
+        "indent": 0,
+        "version": 1,
+        "direction": "ltr",
+        "children": [
+          {
+            "type": "paragraph",
+            "format": "",
+            "indent": 0,
+            "version": 1,
+            "direction": "ltr",
+            "children": [
+              {
+                "detail": 0,
+                "format": 0,
+                "mode": "normal",
+                "style": "",
+                "text": "Our 7-seater passenger vans are built for practicality and comfort, bridging the gap between an SUV and a large minibus.",
+                "type": "text",
+                "version": 1
+              }
+            ]
+          },
+          {
+            "type": "paragraph",
+            "format": "",
+            "indent": 0,
+            "version": 1,
+            "direction": "ltr",
+            "children": [
+              {
+                "detail": 0,
+                "format": 0,
+                "mode": "normal",
+                "style": "",
+                "text": "Whether heading to JKIA with family luggage, taking colleagues to Naivasha for a weekend workshop, or attending a wedding, these vans provide effortless group transit.",
+                "type": "text",
+                "version": 1
+              }
+            ]
+          }
+        ]
+      }
+    },
+    "meta": {
+      "title": "7 Seater Van Hire Nairobi | Toyota Noah & Voxy | Ubuntu Logistics",
+      "description": "Hire a 7-seater Toyota Noah or Voxy van in Nairobi with a driver. Spacious, comfortable transport for families and small groups."
+    },
+    "_status": "published"
+  },
+  {
+    "title": "10 Seater Van / Matatu Hire Nairobi",
+    "slug": "10-seater-van-matatu-hire-nairobi",
+    "subTitle": "Customized Toyota HiAce safari and transfer vans with pop-up roof",
+    "vehicleType": "safari-tour-van",
+    "summary": "Custom-built Toyota HiAce 4x4 safari vans configured with 10 forward-facing window seats, pop-up game viewing roofs, and heavy-duty suspension for overland safaris and group transfers.",
+    "passengerCapacity": 10,
+    "luggageCapacity": 7,
+    "baseDayRateKES": 12000,
+    "baseDayRateUSD": 95,
+    "specifications": {
+      "is4WD": true,
+      "hasPopUpRoof": true,
+      "hasAircon": true,
+      "hasWifi": false,
+      "hasChargingPorts": true,
+      "hasCoolerBox": true,
+      "hasRadioCommunication": true,
+      "transmission": "manual",
+      "fuelType": "diesel"
+    },
+    "idealFor": [
+      "safari-game-drives",
+      "group-excursions",
+      "inter-county"
+    ],
+    "featuresList": [
+      {
+        "feature": "High-lift pop-up roof for 360-degree wildlife viewing and photography"
+      },
+      {
+        "feature": "Engageable 4WD with heavy-duty off-road suspension"
+      },
+      {
+        "feature": "Onboard HF long-range safari communication radio"
+      },
+      {
+        "feature": "Built-in beverage cooler box and inverter charging ports"
+      },
+      {
+        "feature": "KPSGA-certified driver-guide with extensive wildlife tracking knowledge"
+      }
+    ],
+    "content": {
+      "root": {
+        "type": "root",
+        "format": "",
+        "indent": 0,
+        "version": 1,
+        "direction": "ltr",
+        "children": [
+          {
+            "type": "paragraph",
+            "format": "",
+            "indent": 0,
+            "version": 1,
+            "direction": "ltr",
+            "children": [
+              {
+                "detail": 0,
+                "format": 0,
+                "mode": "normal",
+                "style": "",
+                "text": "Our 10-seater safari tour vans are the backbone of group safari travel in East Africa.",
+                "type": "text",
+                "version": 1
+              }
+            ]
+          },
+          {
+            "type": "paragraph",
+            "format": "",
+            "indent": 0,
+            "version": 1,
+            "direction": "ltr",
+            "children": [
+              {
+                "detail": 0,
+                "format": 0,
+                "mode": "normal",
+                "style": "",
+                "text": "Equipped with 4WD, high ground clearance, and an elevating pop-up roof, they handle game drives in Maasai Mara, Amboseli, and Lake Nakuru with ease.",
+                "type": "text",
+                "version": 1
+              }
+            ]
+          }
+        ]
+      }
+    },
+    "meta": {
+      "title": "10 Seater Van / Matatu Hire Nairobi | Safari HiAce Vans | Ubuntu Logistics",
+      "description": "Hire a 10-seater van or safari van in Nairobi with a driver. Built for group road trips, safari game drives, and events."
+    },
+    "_status": "published"
+  },
+  {
+    "title": "14 Seater Minibus Hire Nairobi",
+    "slug": "14-seater-minibus-hire-nairobi",
+    "subTitle": "Dedicated Toyota HiAce minibuses for corporate staff and conference delegations",
+    "vehicleType": "coaster-mini-bus",
+    "summary": "Spacious 14-seater Toyota HiAce high-roof minibuses tailored for corporate shuttle contracts, wedding guest transport, airport group delegations, and inter-county team travel.",
+    "passengerCapacity": 14,
+    "luggageCapacity": 10,
+    "baseDayRateKES": 14000,
+    "baseDayRateUSD": 110,
+    "specifications": {
+      "is4WD": false,
+      "hasPopUpRoof": false,
+      "hasAircon": true,
+      "hasWifi": true,
+      "hasChargingPorts": true,
+      "hasCoolerBox": false,
+      "hasRadioCommunication": false,
+      "transmission": "manual",
+      "fuelType": "diesel"
+    },
+    "idealFor": [
+      "corporate-transport",
+      "group-excursions",
+      "weddings-events",
+      "airport-transfers"
+    ],
+    "featuresList": [
+      {
+        "feature": "High-roof cabin allowing easy standing and comfortable movement"
+      },
+      {
+        "feature": "Full passenger air conditioning with individual overhead vents"
+      },
+      {
+        "feature": "Onboard high-speed 4G Wi-Fi hotspot for business travelers"
+      },
+      {
+        "feature": "Dedicated rear luggage bay and roof rack for oversized baggage"
+      },
+      {
+        "feature": "Full passenger liability insurance coverage"
+      }
+    ],
+    "content": {
+      "root": {
+        "type": "root",
+        "format": "",
+        "indent": 0,
+        "version": 1,
+        "direction": "ltr",
+        "children": [
+          {
+            "type": "paragraph",
+            "format": "",
+            "indent": 0,
+            "version": 1,
+            "direction": "ltr",
+            "children": [
+              {
+                "detail": 0,
+                "format": 0,
+                "mode": "normal",
+                "style": "",
+                "text": "Our 14-seater minibuses are the preferred workhorses for corporate staff shuttling, conference guest transfers, and family event logistics.",
+                "type": "text",
+                "version": 1
+              }
+            ]
+          },
+          {
+            "type": "paragraph",
+            "format": "",
+            "indent": 0,
+            "version": 1,
+            "direction": "ltr",
+            "children": [
+              {
+                "detail": 0,
+                "format": 0,
+                "mode": "normal",
+                "style": "",
+                "text": "With high-roof clearance and cushioned reclining seats, passengers enjoy a comfortable, fatigue-free journey across Nairobi and beyond.",
+                "type": "text",
+                "version": 1
+              }
+            ]
+          }
+        ]
+      }
+    },
+    "meta": {
+      "title": "14 Seater Minibus Hire Nairobi | Corporate & Group Shuttles | Ubuntu Logistics",
+      "description": "Hire a 14-seater minibus in Nairobi with a driver. Comfortable group travel for corporate events, staff transport, and airport transfers."
+    },
+    "_status": "published"
+  },
+  {
+    "title": "Tour Bus & Coaster Hire Nairobi",
+    "slug": "tour-bus-coaster-hire-nairobi",
+    "subTitle": "25-33 seater Toyota Coaster and Rosa luxury mini-coaches",
+    "vehicleType": "large-bus",
+    "summary": "Executive 25 to 33-seater Toyota Coaster and Mitsubishi Rosa buses fitted with reclining seats, public address audio systems, and high-capacity air conditioning for large corporate tours and institutional excursions.",
+    "passengerCapacity": 33,
+    "luggageCapacity": 25,
+    "baseDayRateKES": 25000,
+    "baseDayRateUSD": 195,
+    "specifications": {
+      "is4WD": false,
+      "hasPopUpRoof": false,
+      "hasAircon": true,
+      "hasWifi": true,
+      "hasChargingPorts": true,
+      "hasCoolerBox": false,
+      "hasRadioCommunication": true,
+      "transmission": "manual",
+      "fuelType": "diesel"
+    },
+    "idealFor": [
+      "corporate-transport",
+      "group-excursions",
+      "weddings-events"
+    ],
+    "featuresList": [
+      {
+        "feature": "Plush high-back reclining seats with generous legroom"
+      },
+      {
+        "feature": "Integrated PA microphone audio system for tour guides and event coordinators"
+      },
+      {
+        "feature": "High-capacity dual-compressor climate control air conditioning"
+      },
+      {
+        "feature": "Large under-floor and rear luggage compartments"
+      },
+      {
+        "feature": "Advanced speed governors and real-time GPS fleet tracking"
+      }
+    ],
+    "content": {
+      "root": {
+        "type": "root",
+        "format": "",
+        "indent": 0,
+        "version": 1,
+        "direction": "ltr",
+        "children": [
+          {
+            "type": "paragraph",
+            "format": "",
+            "indent": 0,
+            "version": 1,
+            "direction": "ltr",
+            "children": [
+              {
+                "detail": 0,
+                "format": 0,
+                "mode": "normal",
+                "style": "",
+                "text": "When your travel party exceeds 15 passengers, our 25-33 seater Toyota Coaster mini-coaches provide the ultimate balance of group cohesion, luggage capacity, and road comfort.",
+                "type": "text",
+                "version": 1
+              }
+            ]
+          },
+          {
+            "type": "paragraph",
+            "format": "",
+            "indent": 0,
+            "version": 1,
+            "direction": "ltr",
+            "children": [
+              {
+                "detail": 0,
+                "format": 0,
+                "mode": "normal",
+                "style": "",
+                "text": "Ideal for company team building in Naivasha, academic field trips, sports teams, and large wedding parties traveling between venues.",
+                "type": "text",
+                "version": 1
+              }
+            ]
+          }
+        ]
+      }
+    },
+    "meta": {
+      "title": "Tour Bus & Coaster Hire Nairobi | 25-33 Seater Buses | Ubuntu Logistics",
+      "description": "Hire a 25-33 seater tour bus or Toyota Coaster in Nairobi with a driver. Ideal for corporate groups, school trips, and large events."
+    },
+    "_status": "published"
+  },
+  {
+    "title": "Land Cruiser Hire Kenya",
+    "slug": "land-cruiser-hire-kenya",
+    "subTitle": "Customized Toyota Land Cruiser 4x4 (V8 / 70-Series) safari vehicles",
+    "vehicleType": "safari-land-cruiser",
+    "summary": "The gold standard in East African safari expeditions: heavy-duty custom-stretched Toyota Land Cruiser 4x4 with 7 individual window seats, pop-up game-viewing roof, dual spare wheels, and off-road snorkels.",
+    "passengerCapacity": 7,
+    "luggageCapacity": 7,
+    "baseDayRateKES": 25000,
+    "baseDayRateUSD": 200,
+    "specifications": {
+      "is4WD": true,
+      "hasPopUpRoof": true,
+      "hasAircon": true,
+      "hasWifi": true,
+      "hasChargingPorts": true,
+      "hasCoolerBox": true,
+      "hasRadioCommunication": true,
+      "transmission": "manual",
+      "fuelType": "diesel"
+    },
+    "idealFor": [
+      "safari-game-drives",
+      "inter-county",
+      "vip-executive"
+    ],
+    "featuresList": [
+      {
+        "feature": "Guaranteed window seat for every passenger with sliding glass openings"
+      },
+      {
+        "feature": "Heavy-duty 4WD with locking differentials, dual fuel tanks, and snorkel"
+      },
+      {
+        "feature": "Onboard 12V/220V power inverters to recharge camera batteries & phones"
+      },
+      {
+        "feature": "Integrated electric mini-fridge/cooler box stocked with chilled mineral water"
+      },
+      {
+        "feature": "Experienced Bronze/Silver level KPSGA certified professional safari guide"
+      }
+    ],
+    "content": {
+      "root": {
+        "type": "root",
+        "format": "",
+        "indent": 0,
+        "version": 1,
+        "direction": "ltr",
+        "children": [
+          {
+            "type": "paragraph",
+            "format": "",
+            "indent": 0,
+            "version": 1,
+            "direction": "ltr",
+            "children": [
+              {
+                "detail": 0,
+                "format": 0,
+                "mode": "normal",
+                "style": "",
+                "text": "The Toyota Land Cruiser 70-Series is universally recognized as the finest safari vehicle ever engineered for the African bush.",
+                "type": "text",
+                "version": 1
+              }
+            ]
+          },
+          {
+            "type": "paragraph",
+            "format": "",
+            "indent": 0,
+            "version": 1,
+            "direction": "ltr",
+            "children": [
+              {
+                "detail": 0,
+                "format": 0,
+                "mode": "normal",
+                "style": "",
+                "text": "Our Land Cruisers are custom-built in Nairobi with extended chassis, pop-up observation roofs, high-grade shock absorbers, and premium bucket seats, ensuring you traverse the rugged trails of Maasai Mara, Samburu, and Serengeti in peerless comfort.",
+                "type": "text",
+                "version": 1
+              }
+            ]
+          }
+        ]
+      }
+    },
+    "meta": {
+      "title": "Land Cruiser Hire Kenya | 4x4 Safari Land Cruisers | Ubuntu Logistics",
+      "description": "Hire a 4x4 safari Land Cruiser in Kenya with a driver-guide. Pop-up roof, high ground clearance, built for Maasai Mara and national park safaris."
+    },
+    "_status": "published"
+  },
+  {
+    "title": "Wheelchair Accessible Van Hire Nairobi",
+    "slug": "wheelchair-accessible-van-hire-nairobi",
+    "subTitle": "Specially modified vans with hydraulic wheelchair lift and secure tie-downs",
+    "vehicleType": "van-shuttle",
+    "summary": "Purpose-built wheelchair accessible passenger vans fitted with certified hydraulic wheelchair lifts or rear entry ramps, Q-Straint 4-point docking tie-downs, and passenger seating for family members or caregivers.",
+    "passengerCapacity": 5,
+    "luggageCapacity": 4,
+    "baseDayRateKES": 12000,
+    "baseDayRateUSD": 95,
+    "specifications": {
+      "is4WD": false,
+      "hasPopUpRoof": false,
+      "hasAircon": true,
+      "hasWifi": false,
+      "hasChargingPorts": true,
+      "hasCoolerBox": false,
+      "hasRadioCommunication": false,
+      "transmission": "automatic",
+      "fuelType": "diesel"
+    },
+    "idealFor": [
+      "airport-transfers",
+      "corporate-transport",
+      "weddings-events"
+    ],
+    "featuresList": [
+      {
+        "feature": "Commercial-grade hydraulic wheelchair lift or low-gradient rear access ramp"
+      },
+      {
+        "feature": "International Q-Straint 4-point wheelchair floor tie-down & lap/shoulder belts"
+      },
+      {
+        "feature": "Comfortable accompanying seating for up to 4 caregivers or family members"
+      },
+      {
+        "feature": "Full climate control air conditioning and smooth air suspension ride"
+      },
+      {
+        "feature": "Trained, patient, and courteous drivers specialized in assisted passenger mobility"
+      }
+    ],
+    "content": {
+      "root": {
+        "type": "root",
+        "format": "",
+        "indent": 0,
+        "version": 1,
+        "direction": "ltr",
+        "children": [
+          {
+            "type": "paragraph",
+            "format": "",
+            "indent": 0,
+            "version": 1,
+            "direction": "ltr",
+            "children": [
+              {
+                "detail": 0,
+                "format": 0,
+                "mode": "normal",
+                "style": "",
+                "text": "At Ubuntu Logistics, accessible travel is a fundamental priority.",
+                "type": "text",
+                "version": 1
+              }
+            ]
+          },
+          {
+            "type": "paragraph",
+            "format": "",
+            "indent": 0,
+            "version": 1,
+            "direction": "ltr",
+            "children": [
+              {
+                "detail": 0,
+                "format": 0,
+                "mode": "normal",
+                "style": "",
+                "text": "Our wheelchair-accessible vans provide dignity, safety, and independence for passengers with reduced mobility, offering seamless airport pickups, medical appointment transfers, and family holiday journeys.",
+                "type": "text",
+                "version": 1
+              }
+            ]
+          }
+        ]
+      }
+    },
+    "meta": {
+      "title": "Wheelchair Accessible Van Hire Nairobi | Handicap Transport | Ubuntu Logistics",
+      "description": "Hire a wheelchair-accessible van in Nairobi with a driver. Equipped with ramps, tie-downs, and trained drivers for comfortable, accessible travel."
+    },
+    "_status": "published"
+  },
+  {
+    "title": "Mercedes-Benz E-Class Hire Nairobi",
+    "slug": "mercedes-benz-hire-nairobi",
+    "subTitle": "Luxury executive sedans for VIP airport transfers, diplomatic transit, and weddings",
+    "vehicleType": "executive-suv",
+    "summary": "Premium Mercedes-Benz E-Class luxury sedans offering whisper-quiet cabin comfort, plush leather interior, and executive road presence for VIP delegations, weddings, and high-level corporate travel.",
+    "passengerCapacity": 4,
+    "luggageCapacity": 3,
+    "baseDayRateKES": 18000,
+    "baseDayRateUSD": 145,
+    "specifications": {
+      "is4WD": false,
+      "hasPopUpRoof": false,
+      "hasAircon": true,
+      "hasWifi": true,
+      "hasChargingPorts": true,
+      "hasCoolerBox": true,
+      "hasRadioCommunication": false,
+      "transmission": "automatic",
+      "fuelType": "petrol"
+    },
+    "idealFor": [
+      "vip-executive",
+      "weddings-events",
+      "airport-transfers",
+      "corporate-transport"
+    ],
+    "featuresList": [
+      {
+        "feature": "Full leather interior with dual-zone climate control and acoustic glass"
+      },
+      {
+        "feature": "Uniformed, security-vetted executive chauffeur trained in diplomatic etiquette"
+      },
+      {
+        "feature": "Onboard high-speed 4G Wi-Fi hotspot and rapid USB charging cables"
+      },
+      {
+        "feature": "Complimentary chilled bottled water and premium hand wipes"
+      },
+      {
+        "feature": "Comprehensive passenger liability and full commercial insurance"
+      }
+    ],
+    "content": {
+      "root": {
+        "type": "root",
+        "format": "",
+        "indent": 0,
+        "version": 1,
+        "direction": "ltr",
+        "children": [
+          {
+            "type": "paragraph",
+            "format": "",
+            "indent": 0,
+            "version": 1,
+            "direction": "ltr",
+            "children": [
+              {
+                "detail": 0,
+                "format": 0,
+                "mode": "normal",
+                "style": "",
+                "text": "When you need prestige, quiet comfort, and unmatched executive style in Nairobi, our Mercedes-Benz E-Class fleet is the premier choice. It is ideal for foreign dignitaries, chief executives, luxury airport pickups at JKIA, and bridal convoys.",
+                "type": "text",
+                "version": 1
+              }
+            ]
+          },
+          {
+            "type": "paragraph",
+            "format": "",
+            "indent": 0,
+            "version": 1,
+            "direction": "ltr",
+            "children": [
+              {
+                "detail": 0,
+                "format": 0,
+                "mode": "normal",
+                "style": "",
+                "text": "Every Mercedes-Benz hire includes an impeccably dressed, vetted chauffeur who knows Nairobi's executive corridors, five-star hotels, and embassy zones inside out.",
+                "type": "text",
+                "version": 1
+              }
+            ]
+          }
+        ]
+      }
+    },
+    "meta": {
+      "title": "Mercedes-Benz E-Class Hire Nairobi | Luxury VIP Chauffeur | Ubuntu Logistics",
+      "description": "Hire a Mercedes-Benz E-Class in Nairobi with a professional chauffeur. Luxury sedans for VIP airport transfers, business meetings, and weddings."
+    },
+    "_status": "published"
+  },
+  {
+    "title": "Toyota Prado TX 4x4 Hire Nairobi",
+    "slug": "toyota-prado-tx-hire-nairobi",
+    "subTitle": "Rugged yet luxurious 7-seater 4WD SUVs for countrywide road trips and executive transit",
+    "vehicleType": "executive-suv",
+    "summary": "The Toyota Land Cruiser Prado TX/TXL 4x4 combines go-anywhere four-wheel-drive capability with executive interior styling. Perfect for long-distance Kenya road trips, NGO field missions, and VIP city travel.",
+    "passengerCapacity": 7,
+    "luggageCapacity": 5,
+    "baseDayRateKES": 15000,
+    "baseDayRateUSD": 120,
+    "specifications": {
+      "is4WD": true,
+      "hasPopUpRoof": false,
+      "hasAircon": true,
+      "hasWifi": true,
+      "hasChargingPorts": true,
+      "hasCoolerBox": true,
+      "hasRadioCommunication": false,
+      "transmission": "automatic",
+      "fuelType": "diesel"
+    },
+    "idealFor": [
+      "vip-executive",
+      "inter-county",
+      "group-excursions",
+      "corporate-transport"
+    ],
+    "featuresList": [
+      {
+        "feature": "Full-time 4WD with high ground clearance and terrain management system"
+      },
+      {
+        "feature": "7 spacious seats with versatile split-folding third-row for large luggage"
+      },
+      {
+        "feature": "Dual front and rear air conditioning with independent temperature controls"
+      },
+      {
+        "feature": "High-speed 4G Wi-Fi hotspot and multiple USB charging points"
+      },
+      {
+        "feature": "Available for self-drive or with an experienced professional driver"
+      }
+    ],
+    "content": {
+      "root": {
+        "type": "root",
+        "format": "",
+        "indent": 0,
+        "version": 1,
+        "direction": "ltr",
+        "children": [
+          {
+            "type": "paragraph",
+            "format": "",
+            "indent": 0,
+            "version": 1,
+            "direction": "ltr",
+            "children": [
+              {
+                "detail": 0,
+                "format": 0,
+                "mode": "normal",
+                "style": "",
+                "text": "The Toyota Prado TX is Kenya's most popular luxury 4WD vehicle for good reason. It delivers smooth highway cruising on tarmac roads and effortless power over rough rural tracks across the Great Rift Valley, Mount Kenya, and national conservancies.",
+                "type": "text",
+                "version": 1
+              }
+            ]
+          },
+          {
+            "type": "paragraph",
+            "format": "",
+            "indent": 0,
+            "version": 1,
+            "direction": "ltr",
+            "children": [
+              {
+                "detail": 0,
+                "format": 0,
+                "mode": "normal",
+                "style": "",
+                "text": "Whether traveling for business in Nairobi or driving upcountry with family, the Prado TX gives you total confidence and unmatched comfort.",
+                "type": "text",
+                "version": 1
+              }
+            ]
+          }
+        ]
+      }
+    },
+    "meta": {
+      "title": "Toyota Prado TX Hire Nairobi | 4x4 Luxury SUV Rental Kenya | Ubuntu Logistics",
+      "description": "Rent a Toyota Prado TX 4x4 in Nairobi, Kenya. Self-drive or with a driver. Reliable 7-seater SUV for business, safaris, and family travel."
+    },
+    "_status": "published"
+  },
+  {
+    "title": "22 Seater Bus Hire Nairobi",
+    "slug": "22-seater-bus-hire-nairobi",
+    "subTitle": "Toyota Coaster & Mitsubishi Rosa mini-coaches for medium group travel",
+    "vehicleType": "coaster-mini-bus",
+    "summary": "Comfortable 22-seater mini-coaches with high-back reclining seats, large passenger windows, powerful air conditioning, and dedicated luggage space for team building, church retreats, and family functions.",
+    "passengerCapacity": 22,
+    "luggageCapacity": 15,
+    "baseDayRateKES": 20000,
+    "baseDayRateUSD": 160,
+    "specifications": {
+      "is4WD": false,
+      "hasPopUpRoof": false,
+      "hasAircon": true,
+      "hasWifi": true,
+      "hasChargingPorts": true,
+      "hasCoolerBox": false,
+      "hasRadioCommunication": true,
+      "transmission": "manual",
+      "fuelType": "diesel"
+    },
+    "idealFor": [
+      "corporate-transport",
+      "group-excursions",
+      "weddings-events"
+    ],
+    "featuresList": [
+      {
+        "feature": "22 comfortable reclining seats with individual seatbelts and generous legroom"
+      },
+      {
+        "feature": "Dual-compressor air conditioning with individual passenger overhead vents"
+      },
+      {
+        "feature": "Public address (PA) microphone system for guides and tour leaders"
+      },
+      {
+        "feature": "Large luggage boot and overhead parcel racks for carry-on bags"
+      },
+      {
+        "feature": "Professional PSV-certified commercial driver with clean driving record"
+      }
+    ],
+    "content": {
+      "root": {
+        "type": "root",
+        "format": "",
+        "indent": 0,
+        "version": 1,
+        "direction": "ltr",
+        "children": [
+          {
+            "type": "paragraph",
+            "format": "",
+            "indent": 0,
+            "version": 1,
+            "direction": "ltr",
+            "children": [
+              {
+                "detail": 0,
+                "format": 0,
+                "mode": "normal",
+                "style": "",
+                "text": "When a 14-seater van is too small and a 33-seater coach is too large, our 22-seater mini-buses provide the perfect solution for medium-sized groups.",
+                "type": "text",
+                "version": 1
+              }
+            ]
+          },
+          {
+            "type": "paragraph",
+            "format": "",
+            "indent": 0,
+            "version": 1,
+            "direction": "ltr",
+            "children": [
+              {
+                "detail": 0,
+                "format": 0,
+                "mode": "normal",
+                "style": "",
+                "text": "Enjoy a smooth, quiet ride with full climate control on group road trips to Naivasha, Nakuru, Nanyuki, and Mombasa.",
+                "type": "text",
+                "version": 1
+              }
+            ]
+          }
+        ]
+      }
+    },
+    "meta": {
+      "title": "22 Seater Bus Hire Nairobi | Toyota Coaster & Rosa Minibus | Ubuntu Logistics",
+      "description": "Hire a 22-seater bus in Nairobi with a professional driver. Ideal for corporate team building, wedding guests, school trips, and group tours."
+    },
+    "_status": "published"
+  },
+  {
+    "title": "50 Seater Luxury Coach Hire Kenya",
+    "slug": "50-seater-luxury-coach-hire-kenya",
+    "subTitle": "Full-size long-distance touring coaches for major conferences and large delegations",
+    "vehicleType": "large-bus",
+    "summary": "Flagship 50-seater luxury touring coaches equipped with ergonomic reclining seats, onboard entertainment screens, climate control, and massive underfloor luggage bays for major conferences and corporate group travel.",
+    "passengerCapacity": 50,
+    "luggageCapacity": 45,
+    "baseDayRateKES": 40000,
+    "baseDayRateUSD": 310,
+    "specifications": {
+      "is4WD": false,
+      "hasPopUpRoof": false,
+      "hasAircon": true,
+      "hasWifi": true,
+      "hasChargingPorts": true,
+      "hasCoolerBox": false,
+      "hasRadioCommunication": true,
+      "transmission": "manual",
+      "fuelType": "diesel"
+    },
+    "idealFor": [
+      "corporate-transport",
+      "group-excursions",
+      "weddings-events"
+    ],
+    "featuresList": [
+      {
+        "feature": "50 plush high-back reclining seats with footrests and foldable tray tables"
+      },
+      {
+        "feature": "High-capacity centralized climate control air conditioning"
+      },
+      {
+        "feature": "Overhead HD video screens and multi-speaker audio PA sound system"
+      },
+      {
+        "feature": "Massive underfloor through-luggage compartments for 50+ suitcases"
+      },
+      {
+        "feature": "Two experienced long-distance commercial coach captains"
+      }
+    ],
+    "content": {
+      "root": {
+        "type": "root",
+        "format": "",
+        "indent": 0,
+        "version": 1,
+        "direction": "ltr",
+        "children": [
+          {
+            "type": "paragraph",
+            "format": "",
+            "indent": 0,
+            "version": 1,
+            "direction": "ltr",
+            "children": [
+              {
+                "detail": 0,
+                "format": 0,
+                "mode": "normal",
+                "style": "",
+                "text": "For international conferences, national sporting events, university field excursions, and large corporate gatherings, our 50-seater luxury coaches offer unmatched group travel efficiency.",
+                "type": "text",
+                "version": 1
+              }
+            ]
+          },
+          {
+            "type": "paragraph",
+            "format": "",
+            "indent": 0,
+            "version": 1,
+            "direction": "ltr",
+            "children": [
+              {
+                "detail": 0,
+                "format": 0,
+                "mode": "normal",
+                "style": "",
+                "text": "Travel across Kenya in total comfort with dual experienced coach captains, full climate control, and generous luggage space.",
+                "type": "text",
+                "version": 1
+              }
+            ]
+          }
+        ]
+      }
+    },
+    "meta": {
+      "title": "50 Seater Coach Hire Kenya | Luxury Tour Bus Rental Nairobi | Ubuntu Logistics",
+      "description": "Hire a 50-seater luxury coach in Kenya with experienced drivers. Full aircon, underfloor luggage, PA system for conferences and large group tours."
+    },
+    "_status": "published"
+  },
+  {
+    "title": "Overland Safari Truck Hire Kenya",
+    "slug": "overland-safari-truck-hire-kenya",
+    "subTitle": "Heavy-duty custom 4x4 expedition overland trucks for rugged cross-country safaris",
+    "vehicleType": "large-bus",
+    "summary": "Purpose-built 24-seater 4x4 overland expedition trucks designed for rugged cross-country safaris, camping expeditions, film production crews, and off-grid wilderness exploration across East Africa.",
+    "passengerCapacity": 24,
+    "luggageCapacity": 30,
+    "baseDayRateKES": 35000,
+    "baseDayRateUSD": 275,
+    "specifications": {
+      "is4WD": true,
+      "hasPopUpRoof": true,
+      "hasAircon": false,
+      "hasWifi": false,
+      "hasChargingPorts": true,
+      "hasCoolerBox": true,
+      "hasRadioCommunication": true,
+      "transmission": "manual",
+      "fuelType": "diesel"
+    },
+    "idealFor": [
+      "safari-game-drives",
+      "group-excursions",
+      "inter-county"
+    ],
+    "featuresList": [
+      {
+        "feature": "Heavy-duty all-wheel-drive 4x4 chassis with high ground clearance"
+      },
+      {
+        "feature": "Roll-up canvas sides and elevated open-air wildlife viewing windows"
+      },
+      {
+        "feature": "Built-in commercial kitchen lockers, camping gear bays, and water tanks"
+      },
+      {
+        "feature": "High-output power inverters for charging cameras, laptops, and drones"
+      },
+      {
+        "feature": "Expert overland mechanical driver and certified expedition guide"
+      }
+    ],
+    "content": {
+      "root": {
+        "type": "root",
+        "format": "",
+        "indent": 0,
+        "version": 1,
+        "direction": "ltr",
+        "children": [
+          {
+            "type": "paragraph",
+            "format": "",
+            "indent": 0,
+            "version": 1,
+            "direction": "ltr",
+            "children": [
+              {
+                "detail": 0,
+                "format": 0,
+                "mode": "normal",
+                "style": "",
+                "text": "Our custom 4x4 overland safari trucks are built to conquer Africa's toughest off-road terrains. From Lake Turkana and the Chalbi Desert to Samburu and the Maasai Mara, these trucks take large groups deep into the wilderness.",
+                "type": "text",
+                "version": 1
+              }
+            ]
+          },
+          {
+            "type": "paragraph",
+            "format": "",
+            "indent": 0,
+            "version": 1,
+            "direction": "ltr",
+            "children": [
+              {
+                "detail": 0,
+                "format": 0,
+                "mode": "normal",
+                "style": "",
+                "text": "Equipped with onboard power charging, cooking facilities, water storage, and heavy-duty recovery gear, you can explore Kenya completely self-sufficiently.",
+                "type": "text",
+                "version": 1
+              }
+            ]
+          }
+        ]
+      }
+    },
+    "meta": {
+      "title": "Overland Safari Truck Hire Kenya | 4x4 Expedition Truck Rental | Ubuntu Logistics",
+      "description": "Hire a 4x4 overland safari truck in Kenya. Built for camping safaris, film crews, and group expeditions into remote East African wilderness."
+    },
+    "_status": "published"
+  }
+]

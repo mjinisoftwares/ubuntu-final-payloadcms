@@ -7,6 +7,8 @@ import { Media } from '@/components/Media'
 import RichText from '@/components/RichText'
 
 export const MediumImpactHero: React.FC<Page['hero']> = ({ links, media, richText }) => {
+  const firstMedia = media && Array.isArray(media) && media.length > 0 ? media[0] : null;
+
   return (
     <div className="">
       <div className="container mb-8">
@@ -25,17 +27,17 @@ export const MediumImpactHero: React.FC<Page['hero']> = ({ links, media, richTex
         )}
       </div>
       <div className="container ">
-        {media && typeof media === 'object' && (
+        {firstMedia && typeof firstMedia === 'object' && (
           <div>
             <Media
               className="-mx-4 md:-mx-8 2xl:-mx-16"
               imgClassName=""
               priority
-              resource={media}
+              resource={firstMedia}
             />
-            {media?.caption && (
+            {firstMedia?.caption && (
               <div className="mt-3">
-                <RichText data={media.caption} enableGutter={false} />
+                <RichText data={firstMedia.caption} enableGutter={false} />
               </div>
             )}
           </div>

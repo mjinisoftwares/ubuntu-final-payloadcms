@@ -33,6 +33,12 @@ const nextConfig: NextConfig = {
           protocol: url.protocol.replace(':', '') as 'http' | 'https',
         }
       }),
+
+      {
+        protocol: 'https',
+        hostname: 'pub-1e6eff2fbec94a899562111d71e884e5.r2.dev',
+        pathname: '/**',
+      },
     ],
   },
   webpack: (webpackConfig) => {
