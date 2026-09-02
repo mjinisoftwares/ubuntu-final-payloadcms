@@ -1,13 +1,18 @@
-const SITE_URL =
+let siteUrl =
   process.env.NEXT_PUBLIC_SERVER_URL ||
   process.env.VERCEL_PROJECT_PRODUCTION_URL ||
-  'https://example.com'
+  'https://ubuntulogistics.co.ke'
+
+if (siteUrl && !siteUrl.startsWith('http://') && !siteUrl.startsWith('https://')) {
+  siteUrl = `https://${siteUrl}`
+}
+siteUrl = siteUrl.replace(/\/$/, '')
 
 /** @type {import('next-sitemap').IConfig} */
 module.exports = {
-  siteUrl: SITE_URL,
+  siteUrl,
   generateRobotsTxt: true,
-  exclude: ['/posts-sitemap.xml', '/pages-sitemap.xml', '/*', '/posts/*'],
+  exclude: ['/*-sitemap.xml', '/*', '/posts/*'],
   robotsTxtOptions: {
     policies: [
       {
@@ -16,13 +21,13 @@ module.exports = {
       },
     ],
     additionalSitemaps: [
-      `${SITE_URL}/sitemap.xml`,
-      `${SITE_URL}/pages-sitemap.xml`,
-      `${SITE_URL}/posts-sitemap.xml`,
-      `${SITE_URL}/destinations-sitemap.xml`,
-      `${SITE_URL}/fleet-sitemap.xml`,
-      `${SITE_URL}/services-sitemap.xml`,
-      `${SITE_URL}/hire-sitemap.xml`,
+      `${siteUrl}/sitemap.xml`,
+      `${siteUrl}/pages-sitemap.xml`,
+      `${siteUrl}/posts-sitemap.xml`,
+      `${siteUrl}/destinations-sitemap.xml`,
+      `${siteUrl}/fleet-sitemap.xml`,
+      `${siteUrl}/services-sitemap.xml`,
+      `${siteUrl}/hire-sitemap.xml`,
     ],
   },
 }
