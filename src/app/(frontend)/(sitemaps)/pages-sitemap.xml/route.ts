@@ -32,28 +32,30 @@ const getPagesSitemap = unstable_cache(
     const dateFallback = new Date().toISOString()
 
     const defaultSitemap = [
-      {
-        loc: `${SITE_URL}/search`,
-        lastmod: dateFallback,
-      },
-      {
-        loc: `${SITE_URL}/posts`,
-        lastmod: dateFallback,
-      },
+      { loc: `${SITE_URL}/`, lastmod: dateFallback },
+      { loc: `${SITE_URL}/search`, lastmod: dateFallback },
+      { loc: `${SITE_URL}/posts`, lastmod: dateFallback },
+      { loc: `${SITE_URL}/destinations`, lastmod: dateFallback },
+      { loc: `${SITE_URL}/fleet`, lastmod: dateFallback },
+      { loc: `${SITE_URL}/services`, lastmod: dateFallback },
     ]
 
-    const sitemap = results.docs
+    const pageSitemaps = results.docs
       ? results.docs
           .filter((page) => Boolean(page?.slug))
-          .map((page) => {
-            return {
-              loc: page?.slug === 'home' ? `${SITE_URL}/` : `${SITE_URL}/${page?.slug}`,
-              lastmod: page.updatedAt || dateFallback,
-            }
-          })
+          .map((page) => ({
+            loc: page?.slug === 'home' ? `${SITE_URL}/` : `${SITE_URL}/${page?.slug}`,
+            lastmod: page.updatedAt || dateFallback,
+          }))
       : []
 
-    return [...defaultSitemap, ...sitemap]
+    // Deduplicate entries by location
+    const map = new Map<string, { loc: string; lastmod: string }>()
+    for (const item of [...defaultSitemap, ...pageSitemaps]) {
+      map.set(item.loc, item)
+    }
+
+    return Array.from(map.values())
   },
   ['pages-sitemap'],
   {

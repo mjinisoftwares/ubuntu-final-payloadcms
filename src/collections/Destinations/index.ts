@@ -25,6 +25,7 @@ import { seoFields } from '@/fields/seo'
 import { DestinationArchiveBlock } from '@/blocks/DestinationArchiveBlock/config'
 import { PricingArchiveBlock } from '@/blocks/PricingArchiveBlock/config'
 import { FleetArchiveBlock } from '@/blocks/FleetArchiveBlock/config'
+import { revalidateDestination, revalidateDelete } from './hooks/revalidateDestination'
 
 export const Destinations: CollectionConfig = {
   slug: 'destinations',
@@ -33,6 +34,10 @@ export const Destinations: CollectionConfig = {
     delete: authenticated,
     read: authenticatedOrPublished,
     update: authenticated,
+  },
+  hooks: {
+    afterChange: [revalidateDestination],
+    afterDelete: [revalidateDelete],
   },
   admin: {
     defaultColumns: ['title', 'region', 'distanceFromNairobiKm', 'roadCondition', 'updatedAt'],

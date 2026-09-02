@@ -26,6 +26,7 @@ import { DestinationArchiveBlock } from '@/blocks/DestinationArchiveBlock/config
 import { PricingArchiveBlock } from '@/blocks/PricingArchiveBlock/config'
 import { FleetArchiveBlock } from '@/blocks/FleetArchiveBlock/config'
 import { seoFields } from '@/fields/seo'
+import { revalidateFleet, revalidateDelete } from './hooks/revalidateFleet'
 
 export const Fleet: CollectionConfig = {
   slug: 'fleet',
@@ -34,6 +35,10 @@ export const Fleet: CollectionConfig = {
     delete: authenticated,
     read: authenticatedOrPublished,
     update: authenticated,
+  },
+  hooks: {
+    afterChange: [revalidateFleet],
+    afterDelete: [revalidateDelete],
   },
   admin: {
     defaultColumns: ['title', 'vehicleType', 'passengerCapacity', 'baseDayRateKES', 'updatedAt'],

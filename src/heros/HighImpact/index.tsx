@@ -50,7 +50,7 @@ export const HighImpactHero: React.FC<Page['hero']> = ({ links, media, richText 
                     key={i}
                     className="transition-transform duration-200 hover:scale-[1.02] active:scale-[0.98]"
                   >
-                    <CMSLink {...link} />
+                    <CMSLink {...link} className="rounded-full" />
                   </li>
                 )
               })}
