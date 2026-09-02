@@ -10,6 +10,7 @@ import { RenderHero } from '@/heros/RenderHero'
 import { generateMeta } from '@/utilities/generateMeta'
 import PageClient from './page.client'
 import { LivePreviewListener } from '@/components/LivePreviewListener'
+import { OrganizationSchema, BreadcrumbSchema, WebsiteSchema } from '@/components/Schemas'
 
 export async function generateStaticParams() {
   const payload = await getPayload({ config: configPromise })
@@ -59,6 +60,8 @@ export default async function Page({ params: paramsPromise }: Args) {
 
   const { hero, layout } = page
 
+  const breadcrumbItems = decodedSlug !== 'home' ? [{ name: page.title || decodedSlug, url }] : []
+
   return (
     <article className="pt-16 pb-24">
       <PageClient />
@@ -66,6 +69,10 @@ export default async function Page({ params: paramsPromise }: Args) {
       <PayloadRedirects disableNotFound url={url} />
 
       {draft && <LivePreviewListener />}
+
+      <OrganizationSchema pageUrl={url} pageName={page.meta?.title || page.title} />
+      <BreadcrumbSchema items={breadcrumbItems} />
+      <WebsiteSchema page={page} />
 
       <RenderHero {...hero} />
       <RenderBlocks blocks={layout} />

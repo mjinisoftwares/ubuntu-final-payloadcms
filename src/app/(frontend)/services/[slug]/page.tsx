@@ -13,6 +13,7 @@ import { FAQsBlockComponent } from '@/blocks/FAQBlock/Component'
 import { PricingBlockComponent } from '@/blocks/PricingBlock/Component'
 import { Button } from '@/components/ui/button'
 import { Badge } from '@/components/ui/badge'
+import { ProfessionalServiceSchema, BreadcrumbSchema, FAQSchema } from '@/components/Schemas'
 
 export async function generateStaticParams() {
   const payload = await getPayload({ config: configPromise })
@@ -83,26 +84,16 @@ export default async function ServicePage({ params }: Props) {
   const popularDestinations = Array.isArray(service.popularDestinations) ? service.popularDestinations : []
   const serviceHighlights = Array.isArray(service.serviceHighlights) ? service.serviceHighlights : []
 
-  // Schema.org structured data
-  const jsonLd = {
-    '@context': 'https://schema.org',
-    '@type': 'Service',
-    name: service.title,
-    description: service.summary || service.subTitle,
-    provider: {
-      '@type': 'LocalBusiness',
-      name: 'Kenya Transport & Safari Logistics',
-    },
-    areaServed: 'Kenya',
-    category: category ? category.title : 'Transport',
-  }
+  const breadcrumbItems = [
+    { name: 'Services', url: '/services' },
+    { name: service.title, url: `/services/${slug}` },
+  ]
 
   return (
     <main className="min-h-screen pb-24">
-      <script
-        type="application/ld+json"
-        dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
-      />
+      <ProfessionalServiceSchema service={service} slug={slug} />
+      <BreadcrumbSchema items={breadcrumbItems} />
+      <FAQSchema service={service} />
 
       {/* Hero Section */}
       <section className="relative bg-gradient-to-b from-muted/60 to-background border-b pt-28 pb-16 lg:pt-36 lg:pb-24">

@@ -24,6 +24,7 @@ import RichText from '@/components/RichText'
 import { Button } from '@/components/ui/button'
 import { Badge } from '@/components/ui/badge'
 import Title from '@/components/Title'
+import { ProductSchema, BreadcrumbSchema } from '@/components/Schemas'
 import {
   Accordion,
   AccordionContent,
@@ -169,27 +170,21 @@ export default async function ProgrammaticHirePage({ params }: Props) {
   const startingPriceKES = exactRoutePrice?.priceKES || vehicle.baseDayRateKES || 25000
   const startingPriceUSD = exactRoutePrice?.priceUSD || vehicle.baseDayRateUSD
 
-  // Schema.org Structured Data
-  const jsonLd = {
-    '@context': 'https://schema.org',
-    '@type': 'Product',
-    name: `Hire ${vehicle.title} to ${destination.title}`,
-    description: `Private transport and game drive safari car hire from Nairobi to ${destination.title} with a ${vehicle.title}.`,
-    category: 'Transport & Tour Services',
-    offers: {
-      '@type': 'Offer',
-      price: startingPriceKES,
-      priceCurrency: 'KES',
-      availability: 'https://schema.org/InStock',
-    },
-  }
+  const breadcrumbItems = [
+    { name: vehicle.title, url: `/fleet/${vehicle.slug}` },
+    { name: `To ${destination.title}`, url: `/hire/${fleetSlug}/to/${destSlug}` },
+  ]
 
   return (
     <main className="min-h-screen pb-24">
-      <script
-        type="application/ld+json"
-        dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
+      <ProductSchema
+        name={`Hire ${vehicle.title} to ${destination.title}`}
+        description={`Private transport and safari car hire from Nairobi to ${destination.title} with a ${vehicle.title}.`}
+        price={startingPriceKES}
+        currency="KES"
+        category="Transport & Tour Services"
       />
+      <BreadcrumbSchema items={breadcrumbItems} />
 
       {/* Programmatic Hero Section */}
       <section className="relative bg-gradient-to-b from-muted/70 via-background to-background border-b pt-28 pb-16 lg:pt-36 lg:pb-24">

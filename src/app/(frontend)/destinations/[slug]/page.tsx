@@ -13,6 +13,7 @@ import { FAQsBlockComponent } from '@/blocks/FAQBlock/Component'
 import { PricingBlockComponent } from '@/blocks/PricingBlock/Component'
 import { Button } from '@/components/ui/button'
 import { Badge } from '@/components/ui/badge'
+import { OrganizationSchema, BreadcrumbSchema } from '@/components/Schemas'
 
 export async function generateStaticParams() {
   const payload = await getPayload({ config: configPromise })
@@ -82,25 +83,15 @@ export default async function DestinationPage({ params }: Props) {
   const highlights = Array.isArray(destination.highlights) ? destination.highlights : []
   const routeInfo = destination.routeInfo
 
-  // Schema.org structured data
-  const jsonLd = {
-    '@context': 'https://schema.org',
-    '@type': 'TouristDestination',
-    name: destination.title,
-    description: destination.summary || destination.subTitle,
-    touristType: ['Wildlife Safari', 'Corporate Retreat', 'Holiday Vacation'],
-    includesAttraction: highlights.map((h: any) => ({
-      '@type': 'TouristAttraction',
-      name: h.highlight,
-    })),
-  }
+  const breadcrumbItems = [
+    { name: 'Destinations', url: '/destinations' },
+    { name: destination.title, url: `/destinations/${slug}` },
+  ]
 
   return (
     <main className="min-h-screen pb-24">
-      <script
-        type="application/ld+json"
-        dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
-      />
+      <OrganizationSchema pageUrl={`/destinations/${slug}`} pageName={destination.title} />
+      <BreadcrumbSchema items={breadcrumbItems} />
 
       {/* Hero Section */}
       <section className="relative bg-gradient-to-b from-muted/60 to-background border-b pt-28 pb-16 lg:pt-36 lg:pb-24">

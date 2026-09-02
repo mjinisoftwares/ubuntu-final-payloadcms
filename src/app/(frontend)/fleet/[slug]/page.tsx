@@ -29,6 +29,7 @@ import { FAQsBlockComponent } from '@/blocks/FAQBlock/Component'
 import { PricingBlockComponent } from '@/blocks/PricingBlock/Component'
 import { Button } from '@/components/ui/button'
 import { Badge } from '@/components/ui/badge'
+import { ProductSchema, BreadcrumbSchema } from '@/components/Schemas'
 
 export async function generateStaticParams() {
   const payload = await getPayload({ config: configPromise })
@@ -99,29 +100,21 @@ export default async function FleetPage({ params }: Props) {
   const idealFor = Array.isArray(vehicle.idealFor) ? vehicle.idealFor : []
   const gallery = Array.isArray(vehicle.gallery) ? vehicle.gallery : []
 
-  // Schema.org structured data
-  const jsonLd = {
-    '@context': 'https://schema.org',
-    '@type': 'Vehicle',
-    name: vehicle.title,
-    description: vehicle.summary || vehicle.subTitle,
-    seatingCapacity: vehicle.passengerCapacity,
-    driveWheelConfiguration: specs?.is4WD ? 'AllWheelDrive' : 'FrontWheelDrive',
-    fuelType: specs?.fuelType || 'Diesel',
-    offers: {
-      '@type': 'Offer',
-      price: vehicle.baseDayRateKES,
-      priceCurrency: 'KES',
-      availability: 'https://schema.org/InStock',
-    },
-  }
+  const breadcrumbItems = [
+    { name: 'Fleet', url: '/fleet' },
+    { name: vehicle.title, url: `/fleet/${slug}` },
+  ]
 
   return (
     <main className="min-h-screen pb-24">
-      <script
-        type="application/ld+json"
-        dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
+      <ProductSchema
+        name={vehicle.title}
+        description={vehicle.summary || vehicle.subTitle}
+        price={vehicle.baseDayRateKES}
+        currency="KES"
+        category="Vehicle Hire"
       />
+      <BreadcrumbSchema items={breadcrumbItems} />
 
       {/* Hero Section */}
       <section className="relative bg-gradient-to-b from-muted/60 to-background border-b pt-28 pb-16 lg:pt-36 lg:pb-24">
