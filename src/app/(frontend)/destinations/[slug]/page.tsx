@@ -4,7 +4,7 @@ import React, { cache } from 'react'
 import { getPayload } from 'payload'
 import configPromise from '@payload-config'
 import Link from 'next/link'
-import { ArrowRight, CheckCircle, Clock, Compass, MapPin, ShieldAlert, Sparkles, Users, Luggage } from 'lucide-react'
+import { ArrowRight, CheckCircle, Clock, Compass, MapPin, Sparkles, Users, Luggage, ShieldCheck, PhoneCall } from 'lucide-react'
 
 import { Media } from '@/components/Media'
 import RichText from '@/components/RichText'
@@ -14,6 +14,7 @@ import { PricingBlockComponent } from '@/blocks/PricingBlock/Component'
 import { Button } from '@/components/ui/button'
 import { Badge } from '@/components/ui/badge'
 import { OrganizationSchema, BreadcrumbSchema } from '@/components/Schemas'
+import ContentNavigation from '@/components/ContentNavigation'
 
 export async function generateStaticParams() {
   const payload = await getPayload({ config: configPromise })
@@ -94,8 +95,8 @@ export default async function DestinationPage({ params }: Props) {
       <BreadcrumbSchema items={breadcrumbItems} />
 
       {/* Hero Section */}
-      <section className="relative bg-gradient-to-b from-muted/60 to-background border-b pt-28 pb-16 lg:pt-36 lg:pb-24">
-        <div className="container mx-auto px-4 sm:px-6 lg:px-8">
+      <section className="relative bg-gradient-to-b from-muted/60 to-background border-b pt-28 pb-16 lg:pt-36 lg:pb-20">
+        <div className="container mx-auto px-4 sm:px-6 lg:px-8 max-w-7xl">
           {/* Breadcrumb */}
           <nav className="flex items-center gap-2 text-xs sm:text-sm text-muted-foreground mb-6">
             <Link href="/" className="hover:text-foreground">Home</Link>
@@ -105,7 +106,7 @@ export default async function DestinationPage({ params }: Props) {
             <span className="text-foreground/80">{destination.title}</span>
           </nav>
 
-          <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 items-center">
+          <div className="grid grid-cols-1 lg:grid-cols-12 gap-10 items-center">
             <div className="lg:col-span-7">
               <div className="flex flex-wrap gap-2 mb-4">
                 {destination.region && (
@@ -180,141 +181,177 @@ export default async function DestinationPage({ params }: Props) {
         </div>
       </section>
 
-      {/* Route & Highlights Overview */}
-      <section className="py-14 bg-background border-b">
-        <div className="container mx-auto px-4 max-w-6xl">
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
-            {/* Highlights Card */}
-            {highlights.length > 0 && (
+      {/* Main Content Area with Sticky ContentNavigation on MD+ Screens */}
+      <article className="container mx-auto px-4 sm:px-6 lg:px-8 py-12 max-w-7xl">
+        <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-12 items-start">
+          {/* Main Destination Column */}
+          <div className="lg:col-span-8 space-y-14 min-w-0">
+            {/* Route & Highlights Overview */}
+            <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+              {/* Highlights Card */}
+              {highlights.length > 0 && (
+                <div className="p-6 rounded-2xl border bg-card shadow-sm">
+                  <h2 className="text-lg sm:text-xl font-bold flex items-center gap-2 mb-4 text-foreground">
+                    <Sparkles className="h-5 w-5 text-primary" /> Key Highlights & Attractions
+                  </h2>
+                  <ul className="space-y-3">
+                    {highlights.map((h: any, i: number) => (
+                      <li key={i} className="flex items-start gap-2.5 text-sm text-muted-foreground">
+                        <CheckCircle className="h-4 w-4 text-primary shrink-0 mt-0.5" />
+                        <span>{h.highlight}</span>
+                      </li>
+                    ))}
+                  </ul>
+                </div>
+              )}
+
+              {/* Logistics & Route Guide Card */}
               <div className="p-6 rounded-2xl border bg-card shadow-sm">
-                <h2 className="text-xl font-bold flex items-center gap-2 mb-4 text-foreground">
-                  <Sparkles className="h-5 w-5 text-primary" /> Key Highlights & Attractions
+                <h2 className="text-lg sm:text-xl font-bold flex items-center gap-2 mb-4 text-foreground">
+                  <Compass className="h-5 w-5 text-primary" /> Route Logistics Guide
                 </h2>
-                <ul className="space-y-3">
-                  {highlights.map((h: any, i: number) => (
-                    <li key={i} className="flex items-start gap-2.5 text-sm text-muted-foreground">
-                      <CheckCircle className="h-4 w-4 text-primary shrink-0 mt-0.5" />
-                      <span>{h.highlight}</span>
-                    </li>
-                  ))}
-                </ul>
+                <div className="space-y-3.5 text-sm">
+                  <div>
+                    <span className="font-semibold text-foreground block">Pickup & Starting Point:</span>
+                    <span className="text-muted-foreground">{routeInfo?.startingPoint || 'Nairobi CBD, JKIA, Wilson Airport, or Hotel'}</span>
+                  </div>
+                  {routeInfo?.recommendedStops && (
+                    <div>
+                      <span className="font-semibold text-foreground block">Recommended En-Route Stops:</span>
+                      <span className="text-muted-foreground">{routeInfo.recommendedStops}</span>
+                    </div>
+                  )}
+                  {destination.bestTimeToVisit && (
+                    <div>
+                      <span className="font-semibold text-foreground block">Best Time to Visit:</span>
+                      <span className="text-muted-foreground">{destination.bestTimeToVisit}</span>
+                    </div>
+                  )}
+                  {routeInfo?.entryFeesNotes && (
+                    <div className="p-3 rounded-xl bg-muted/60 text-xs text-muted-foreground border">
+                      <span className="font-semibold text-foreground block mb-1">Park Fees & Access Notes:</span>
+                      {routeInfo.entryFeesNotes}
+                    </div>
+                  )}
+                </div>
               </div>
+            </div>
+
+            {/* Main RichText Content */}
+            {destination.content && (
+              <section className="prose dark:prose-invert max-w-none">
+                <RichText data={destination.content} enableGutter={false} />
+              </section>
             )}
 
-            {/* Logistics & Route Guide Card */}
-            <div className="p-6 rounded-2xl border bg-card shadow-sm">
-              <h2 className="text-xl font-bold flex items-center gap-2 mb-4 text-foreground">
-                <Compass className="h-5 w-5 text-primary" /> Route Logistics Guide
-              </h2>
-              <div className="space-y-3.5 text-sm">
-                <div>
-                  <span className="font-semibold text-foreground block">Pickup & Starting Point:</span>
-                  <span className="text-muted-foreground">{routeInfo?.startingPoint || 'Nairobi CBD, JKIA, Wilson Airport, or Hotel'}</span>
+            {/* Dynamic Layout Blocks if defined */}
+            {destination.layout && destination.layout.length > 0 && (
+              <RenderBlocks blocks={destination.layout} />
+            )}
+
+            {/* Recommended Fleet for this Destination */}
+            {recommendedFleet.length > 0 && (
+              <section className="rounded-2xl border bg-muted/20 p-6 sm:p-8">
+                <div className="mb-8">
+                  <Badge variant="outline" className="mb-2">Vehicle Recommendations</Badge>
+                  <h2 className="text-2xl sm:text-3xl font-bold tracking-tight">
+                    Recommended Fleet for {destination.title}
+                  </h2>
+                  <p className="mt-2 text-sm text-muted-foreground">
+                    Specially selected based on the road terrain ({destination.roadCondition?.replace(/-/g, ' ')}), passenger comfort, and luggage space.
+                  </p>
                 </div>
-                {routeInfo?.recommendedStops && (
-                  <div>
-                    <span className="font-semibold text-foreground block">Recommended En-Route Stops:</span>
-                    <span className="text-muted-foreground">{routeInfo.recommendedStops}</span>
-                  </div>
-                )}
+
+                <div className="grid grid-cols-1 sm:grid-cols-2 gap-6">
+                  {recommendedFleet.map((vehicle: any) => {
+                    if (typeof vehicle !== 'object') return null
+                    return (
+                      <div key={vehicle.id} className="rounded-2xl border bg-card p-5 shadow-sm hover:shadow-md transition-all flex flex-col justify-between">
+                        <div>
+                          {vehicle.featuredImage && typeof vehicle.featuredImage === 'object' && (
+                            <div className="rounded-xl overflow-hidden mb-4 h-44 bg-muted">
+                              <Media resource={vehicle.featuredImage} className="w-full h-full object-cover" />
+                            </div>
+                          )}
+                          <h3 className="text-base font-bold">{vehicle.title}</h3>
+                          <p className="text-xs text-muted-foreground mt-1 line-clamp-2">{vehicle.summary}</p>
+                          
+                          <div className="mt-4 flex items-center gap-3 text-xs text-muted-foreground border-y py-2.5">
+                            <span className="flex items-center gap-1">
+                              <Users className="h-3.5 w-3.5 text-primary" /> {vehicle.passengerCapacity} Seats
+                            </span>
+                            <span className="flex items-center gap-1">
+                              <Luggage className="h-3.5 w-3.5 text-primary" /> {vehicle.luggageCapacity} Bags
+                            </span>
+                          </div>
+                        </div>
+
+                        <div className="mt-4">
+                          <Button asChild size="sm" variant="default" className="rounded-lg w-full font-semibold">
+                            <Link href={`/hire/${vehicle.slug}/to/${destination.slug}`}>
+                              Book {vehicle.title} to {destination.title}
+                            </Link>
+                          </Button>
+                        </div>
+                      </div>
+                    )
+                  })}
+                </div>
+              </section>
+            )}
+
+            {/* Dynamic Route Pricing */}
+            <PricingBlockComponent
+              blockType="pricingBlock"
+              destination={destination.id}
+              title={`Transport & Transfer Rates to ${destination.title}`}
+              subTitle="Transparent Route Pricing"
+            />
+
+            {/* Destination-Specific FAQs */}
+            <FAQsBlockComponent
+              blockType="faqsBlock"
+              destination={destination.id}
+              title={`Frequently Asked Questions: Travelling to ${destination.title}`}
+              subTitle="Destination FAQs"
+            />
+          </div>
+
+          {/* Sticky Sidebar Column for MD & Above */}
+          <aside className="lg:col-span-4 sticky top-28 space-y-6">
+            <ContentNavigation title="Destination Guide" />
+
+            {/* Quick Route Summary Card */}
+            <div className="p-5 rounded-2xl border border-border bg-card/95 backdrop-blur shadow-sm space-y-4">
+              <div className="flex items-center gap-2 text-primary">
+                <Compass className="h-4 w-4" />
+                <h3 className="font-bold text-foreground text-sm">Trip to {destination.title}</h3>
+              </div>
+              <div className="space-y-2 text-xs text-muted-foreground">
+                <div className="flex justify-between py-1 border-b border-border/60">
+                  <span>Distance:</span>
+                  <span className="font-semibold text-foreground">{destination.distanceFromNairobiKm} KM</span>
+                </div>
+                <div className="flex justify-between py-1 border-b border-border/60">
+                  <span>Travel Time:</span>
+                  <span className="font-semibold text-foreground">{destination.estimatedTravelTime}</span>
+                </div>
                 {destination.bestTimeToVisit && (
-                  <div>
-                    <span className="font-semibold text-foreground block">Best Time to Visit:</span>
-                    <span className="text-muted-foreground">{destination.bestTimeToVisit}</span>
-                  </div>
-                )}
-                {routeInfo?.entryFeesNotes && (
-                  <div className="p-3 rounded-xl bg-muted/60 text-xs text-muted-foreground border">
-                    <span className="font-semibold text-foreground block mb-1">Park Fees & Access Notes:</span>
-                    {routeInfo.entryFeesNotes}
+                  <div className="flex justify-between py-1 border-b border-border/60">
+                    <span>Best Time:</span>
+                    <span className="font-semibold text-foreground">{destination.bestTimeToVisit}</span>
                   </div>
                 )}
               </div>
+              <Button asChild size="default" className="w-full rounded-xl font-semibold">
+                <Link href={`/search?q=${encodeURIComponent(destination.title)}`}>
+                  Book Transport <ArrowRight className="ml-2 h-4 w-4" />
+                </Link>
+              </Button>
             </div>
-          </div>
+          </aside>
         </div>
-      </section>
-
-      {/* Main Content */}
-      {destination.content && (
-        <section className="py-16 bg-background">
-          <div className="container mx-auto px-4 max-w-4xl prose dark:prose-invert">
-            <RichText data={destination.content} enableGutter={false} />
-          </div>
-        </section>
-      )}
-
-      {/* Dynamic Layout Blocks if defined */}
-      {destination.layout && destination.layout.length > 0 && (
-        <RenderBlocks blocks={destination.layout} />
-      )}
-
-      {/* Recommended Fleet for this Destination */}
-      {recommendedFleet.length > 0 && (
-        <section className="py-16 bg-muted/30 border-y">
-          <div className="container mx-auto px-4 max-w-6xl">
-            <div className="text-center max-w-2xl mx-auto mb-12">
-              <Badge variant="outline" className="mb-2">Vehicle Recommendations</Badge>
-              <h2 className="text-2xl sm:text-3xl font-bold tracking-tight">
-                Recommended Fleet for {destination.title}
-              </h2>
-              <p className="mt-2 text-sm text-muted-foreground">
-                Specially selected based on the road terrain ({destination.roadCondition?.replace(/-/g, ' ')}), passenger comfort, and luggage space.
-              </p>
-            </div>
-
-            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-              {recommendedFleet.map((vehicle: any) => {
-                if (typeof vehicle !== 'object') return null
-                return (
-                  <div key={vehicle.id} className="rounded-2xl border bg-card p-5 shadow-sm hover:shadow-md transition-all">
-                    {vehicle.featuredImage && typeof vehicle.featuredImage === 'object' && (
-                      <div className="rounded-xl overflow-hidden mb-4 h-44 bg-muted">
-                        <Media resource={vehicle.featuredImage} className="w-full h-full object-cover" />
-                      </div>
-                    )}
-                    <h3 className="text-base font-bold">{vehicle.title}</h3>
-                    <p className="text-xs text-muted-foreground mt-1 line-clamp-2">{vehicle.summary}</p>
-                    
-                    <div className="mt-4 flex items-center gap-3 text-xs text-muted-foreground border-y py-2">
-                      <span className="flex items-center gap-1">
-                        <Users className="h-3 w-3 text-primary" /> {vehicle.passengerCapacity} Seats
-                      </span>
-                      <span className="flex items-center gap-1">
-                        <Luggage className="h-3 w-3 text-primary" /> {vehicle.luggageCapacity} Bags
-                      </span>
-                    </div>
-
-                    <div className="mt-4 flex items-center justify-between">
-                      <Button asChild size="sm" variant="default" className="rounded-lg w-full">
-                        <Link href={`/hire/${vehicle.slug}/to/${destination.slug}`}>
-                          Book {vehicle.title} to {destination.title}
-                        </Link>
-                      </Button>
-                    </div>
-                  </div>
-                )
-              })}
-            </div>
-          </div>
-        </section>
-      )}
-
-      {/* Dynamic Route Pricing */}
-      <PricingBlockComponent
-        blockType="pricingBlock"
-        destination={destination.id}
-        title={`Transport & Transfer Rates to ${destination.title}`}
-        subTitle="Transparent Route Pricing"
-      />
-
-      {/* Destination-Specific FAQs */}
-      <FAQsBlockComponent
-        blockType="faqsBlock"
-        destination={destination.id}
-        title={`Frequently Asked Questions: Travelling to ${destination.title}`}
-        subTitle="Destination FAQs"
-      />
+      </article>
     </main>
   )
 }

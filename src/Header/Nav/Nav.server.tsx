@@ -13,6 +13,77 @@ interface DesktopNavProps {
   items: NavItem[]
 }
 
+export const getHref = (item: NavItem | ChildItem | any): string => {
+  if (!item) return '#'
+
+  // 1. Explicit external or custom URL
+  if (item.linkType === 'external' || item.linkType === 'custom') {
+    if (item.externalUrl && typeof item.externalUrl === 'string' && item.externalUrl.trim()) {
+      return item.externalUrl.trim()
+    }
+  }
+
+  // 2. Direct externalUrl, url, or href property
+  if (item.externalUrl && typeof item.externalUrl === 'string' && item.externalUrl.trim()) {
+    return item.externalUrl.trim()
+  }
+  if (item.url && typeof item.url === 'string' && item.url.trim()) {
+    return item.url.trim()
+  }
+  if (item.href && typeof item.href === 'string' && item.href.trim()) {
+    return item.href.trim()
+  }
+
+  // 3. Internal Relationship reference
+  const internal = item.internal
+  if (internal) {
+    if (typeof internal === 'object' && internal !== null) {
+      // Polymorphic relation: { relationTo: 'services', value: { slug: 'safari' } }
+      if (
+        'relationTo' in internal &&
+        'value' in internal &&
+        typeof internal.value === 'object' &&
+        internal.value !== null
+      ) {
+        const relation = internal.relationTo
+        const slug = (internal.value as any).slug
+        if (slug) {
+          if (relation === 'pages') {
+            return slug === 'home' ? '/' : `/${slug}`
+          }
+          return `/${relation}/${slug}`
+        }
+      }
+
+      // Direct document relation: { slug: '...' }
+      if ('slug' in internal && typeof internal.slug === 'string' && internal.slug.trim()) {
+        const slug = internal.slug.trim()
+        if (slug === 'home') return '/'
+        return slug.startsWith('/') ? slug : `/${slug}`
+      }
+    } else if (typeof internal === 'string' && internal.trim()) {
+      const trimmed = internal.trim()
+      if (trimmed.startsWith('/')) return trimmed
+    }
+  }
+
+  // 4. Canonical fallback matching based on item label
+  if (item.label && typeof item.label === 'string') {
+    const clean = item.label.trim().toLowerCase()
+    if (clean === 'home') return '/'
+    if (clean === 'destinations' || clean === 'destination') return '/destinations'
+    if (clean === 'services' || clean === 'service') return '/services'
+    if (clean === 'fleet' || clean === 'vehicles' || clean === 'our fleet') return '/fleet'
+    if (clean === 'posts' || clean === 'blog' || clean === 'news' || clean === 'articles') return '/posts'
+    if (clean === 'about' || clean === 'about us') return '/about'
+    if (clean === 'contact' || clean === 'contact us') return '/contact'
+    if (clean === 'search') return '/search'
+    if (clean === 'hire') return '/fleet'
+  }
+
+  return '#'
+}
+
 export function DesktopNav({ items }: DesktopNavProps) {
   const pathname = usePathname()
   if (!items?.length) return null
@@ -27,16 +98,6 @@ export function DesktopNav({ items }: DesktopNavProps) {
     }
 
     return currentPath === targetPath || currentPath.startsWith(`${targetPath}/`)
-  }
-
-  const getHref = (item: NavItem | ChildItem): string => {
-    if (item.linkType === 'external') return item.externalUrl || '#'
-    const internal = item.internal
-    if (typeof internal === 'object' && internal !== null && 'slug' in internal) {
-      const slug = internal.slug || 'home'
-      return slug === 'home' ? '/' : `/${slug}`
-    }
-    return '#'
   }
 
   const getTarget = (item: NavItem | ChildItem): string | undefined => {
@@ -75,10 +136,10 @@ export function DesktopNav({ items }: DesktopNavProps) {
             target={getTarget(item)}
             rel={getRel(item)}
             className={cn(
-              'inline-flex items-center gap-1 rounded-full px-1 py-2 text-sm font-semibold transition-colors duration-200',
+              'inline-flex items-center gap-1 rounded-full px-2 py-2 text-sm font-semibold transition-colors duration-200',
               active
-                ? 'text-secondary font-semibold  '
-                : 'text-muted-foreground hover:text-primary hover:underline ',
+                ? 'text-secondary font-semibold'
+                : 'text-muted-foreground hover:text-primary hover:underline',
             )}
           >
             <span>{item.label}</span>

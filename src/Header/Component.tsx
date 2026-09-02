@@ -54,6 +54,27 @@ export async function Header() {
             ...mappedServices,
           ]
         }
+
+        if (item.label.toLowerCase() === 'fleet' || item.label.toLowerCase() === 'our fleet') {
+          const fleetReq = await payload.find({
+            collection: 'fleet',
+            limit: 50,
+            depth: 0,
+          })
+
+          const mappedFleet = fleetReq.docs.map((doc) => ({
+            label: doc.title,
+            description: doc.subTitle || doc.summary || `Hire ${doc.title}`,
+            linkType: 'custom' as const,
+            externalUrl: `/fleet/${doc.slug}`,
+            newTab: false,
+          }))
+
+          item.children = [
+            ...(item.children || []),
+            ...mappedFleet,
+          ]
+        }
       }
     }
 

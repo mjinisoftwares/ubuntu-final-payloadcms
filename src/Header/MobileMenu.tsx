@@ -6,6 +6,7 @@ import { Menu, X, ChevronDown, Phone, Mail, Sparkles } from 'lucide-react'
 import type { Header } from '@/payload-types'
 import { CMSLink } from '@/components/Link'
 import { Logo } from '@/components/Logo/Logo'
+import { getHref } from './Nav/Nav.server'
 
 type NavItem = NonNullable<Header['navItems']>[number]
 type ChildItem = NonNullable<NavItem['children']>[number]
@@ -42,18 +43,6 @@ export function MobileMenu({ items }: MobileMenuProps) {
       window.removeEventListener('keydown', handleKeyDown)
     }
   }, [open])
-
-  const getHref = (item: NavItem | ChildItem): string => {
-    if (item.linkType === 'external') {
-      return item.externalUrl || '#'
-    }
-    const internal = item.internal
-    if (typeof internal === 'object' && internal !== null && 'slug' in internal) {
-      const slug = internal.slug || 'home'
-      return slug === 'home' ? '/' : `/${slug}`
-    }
-    return '#'
-  }
 
   const getTarget = (item: NavItem | ChildItem): string | undefined => {
     return 'newTab' in item && item.newTab ? '_blank' : undefined

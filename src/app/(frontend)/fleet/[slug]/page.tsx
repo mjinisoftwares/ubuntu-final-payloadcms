@@ -6,20 +6,16 @@ import configPromise from '@payload-config'
 import Link from 'next/link'
 import {
   ArrowRight,
-  Check,
   CheckCircle2,
-  Fuel,
-  Gauge,
   Luggage,
-  Radio,
-  Refrigerator,
   ShieldCheck,
   Sparkles,
-  Tv,
   Users,
   Wifi,
   Wind,
   Zap,
+  Refrigerator,
+  Car,
 } from 'lucide-react'
 
 import { Media } from '@/components/Media'
@@ -30,6 +26,7 @@ import { PricingBlockComponent } from '@/blocks/PricingBlock/Component'
 import { Button } from '@/components/ui/button'
 import { Badge } from '@/components/ui/badge'
 import { ProductSchema, BreadcrumbSchema } from '@/components/Schemas'
+import ContentNavigation from '@/components/ContentNavigation'
 
 export async function generateStaticParams() {
   const payload = await getPayload({ config: configPromise })
@@ -98,7 +95,6 @@ export default async function FleetPage({ params }: Props) {
   const specs = vehicle.specifications
   const featuresList = Array.isArray(vehicle.featuresList) ? vehicle.featuresList : []
   const idealFor = Array.isArray(vehicle.idealFor) ? vehicle.idealFor : []
-  const gallery = Array.isArray(vehicle.gallery) ? vehicle.gallery : []
 
   const breadcrumbItems = [
     { name: 'Fleet', url: '/fleet' },
@@ -117,8 +113,8 @@ export default async function FleetPage({ params }: Props) {
       <BreadcrumbSchema items={breadcrumbItems} />
 
       {/* Hero Section */}
-      <section className="relative bg-gradient-to-b from-muted/60 to-background border-b pt-28 pb-16 lg:pt-36 lg:pb-24">
-        <div className="container mx-auto px-4 sm:px-6 lg:px-8">
+      <section className="relative bg-gradient-to-b from-muted/60 to-background border-b pt-28 pb-16 lg:pt-36 lg:pb-20">
+        <div className="container mx-auto px-4 sm:px-6 lg:px-8 max-w-7xl">
           {/* Breadcrumb */}
           <nav className="flex items-center gap-2 text-xs sm:text-sm text-muted-foreground mb-6">
             <Link href="/" className="hover:text-foreground">Home</Link>
@@ -128,7 +124,7 @@ export default async function FleetPage({ params }: Props) {
             <span className="text-foreground/80">{vehicle.title}</span>
           </nav>
 
-          <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 items-center">
+          <div className="grid grid-cols-1 lg:grid-cols-12 gap-10 items-center">
             <div className="lg:col-span-7">
               <div className="flex flex-wrap gap-2 mb-4">
                 {vehicle.vehicleType && (
@@ -196,133 +192,170 @@ export default async function FleetPage({ params }: Props) {
         </div>
       </section>
 
-      {/* Specifications & Amenities */}
-      <section className="py-14 bg-background border-b">
-        <div className="container mx-auto px-4 max-w-6xl">
-          <div className="text-center max-w-2xl mx-auto mb-10">
-            <h2 className="text-2xl font-bold tracking-tight">Vehicle Specifications & Amenities</h2>
-          </div>
-
-          <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-4 gap-4">
-            <div className="p-4 rounded-xl border bg-card text-center">
-              <Users className="h-6 w-6 text-primary mx-auto mb-2" />
-              <span className="text-xs text-muted-foreground block">Passenger Capacity</span>
-              <span className="text-base font-bold text-foreground">{vehicle.passengerCapacity} Window Seats</span>
-            </div>
-
-            <div className="p-4 rounded-xl border bg-card text-center">
-              <Luggage className="h-6 w-6 text-primary mx-auto mb-2" />
-              <span className="text-xs text-muted-foreground block">Luggage Space</span>
-              <span className="text-base font-bold text-foreground">{vehicle.luggageCapacity} Large Bags</span>
-            </div>
-
-            <div className="p-4 rounded-xl border bg-card text-center">
-              <ShieldCheck className="h-6 w-6 text-primary mx-auto mb-2" />
-              <span className="text-xs text-muted-foreground block">Drive System</span>
-              <span className="text-base font-bold text-foreground">{specs?.is4WD ? 'Full 4x4 Off-Road' : '2WD High-Clearance'}</span>
-            </div>
-
-            <div className="p-4 rounded-xl border bg-card text-center">
-              <Wind className="h-6 w-6 text-primary mx-auto mb-2" />
-              <span className="text-xs text-muted-foreground block">Climate Control</span>
-              <span className="text-base font-bold text-foreground">{specs?.hasAircon ? 'Dual A/C System' : 'Standard Ventilation'}</span>
-            </div>
-
-            {specs?.hasPopUpRoof && (
-              <div className="p-4 rounded-xl border bg-card text-center">
-                <Sparkles className="h-6 w-6 text-primary mx-auto mb-2" />
-                <span className="text-xs text-muted-foreground block">Roof System</span>
-                <span className="text-base font-bold text-foreground">Pop-Up Safari Hatch</span>
+      {/* Main Content Area with Sticky ContentNavigation on MD+ Screens */}
+      <article className="container mx-auto px-4 sm:px-6 lg:px-8 py-12 max-w-7xl">
+        <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-12 items-start">
+          {/* Main Vehicle Column */}
+          <div className="lg:col-span-8 space-y-14 min-w-0">
+            {/* Specifications & Amenities */}
+            <section className="rounded-2xl border bg-card p-6 sm:p-8 shadow-sm">
+              <div className="mb-6">
+                <h2 className="text-2xl font-bold tracking-tight">Vehicle Specifications & Amenities</h2>
               </div>
-            )}
 
-            {specs?.hasWifi && (
-              <div className="p-4 rounded-xl border bg-card text-center">
-                <Wifi className="h-6 w-6 text-primary mx-auto mb-2" />
-                <span className="text-xs text-muted-foreground block">Connectivity</span>
-                <span className="text-base font-bold text-foreground">Onboard Wi-Fi</span>
-              </div>
-            )}
-
-            {specs?.hasChargingPorts && (
-              <div className="p-4 rounded-xl border bg-card text-center">
-                <Zap className="h-6 w-6 text-primary mx-auto mb-2" />
-                <span className="text-xs text-muted-foreground block">Power</span>
-                <span className="text-base font-bold text-foreground">USB / Inverter Charging</span>
-              </div>
-            )}
-
-            {specs?.hasCoolerBox && (
-              <div className="p-4 rounded-xl border bg-card text-center">
-                <Refrigerator className="h-6 w-6 text-primary mx-auto mb-2" />
-                <span className="text-xs text-muted-foreground block">Beverages</span>
-                <span className="text-base font-bold text-foreground">Built-in Cooler Box</span>
-              </div>
-            )}
-          </div>
-        </div>
-      </section>
-
-      {/* Features & Ideal Use Cases */}
-      {(featuresList.length > 0 || idealFor.length > 0) && (
-        <section className="py-14 bg-muted/20 border-b">
-          <div className="container mx-auto px-4 max-w-6xl">
-            <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
-              {featuresList.length > 0 && (
-                <div className="p-6 rounded-2xl border bg-card shadow-sm">
-                  <h3 className="text-lg font-bold mb-4">Vehicle Highlights & Customization</h3>
-                  <ul className="space-y-3">
-                    {featuresList.map((f: any, idx: number) => (
-                      <li key={idx} className="flex items-start gap-2.5 text-sm text-muted-foreground">
-                        <CheckCircle2 className="h-4 w-4 text-primary shrink-0 mt-0.5" />
-                        <span>{f.feature}</span>
-                      </li>
-                    ))}
-                  </ul>
+              <div className="grid grid-cols-2 sm:grid-cols-3 gap-4">
+                <div className="p-4 rounded-xl border bg-muted/30 text-center">
+                  <Users className="h-6 w-6 text-primary mx-auto mb-2" />
+                  <span className="text-xs text-muted-foreground block">Passenger Capacity</span>
+                  <span className="text-sm font-bold text-foreground">{vehicle.passengerCapacity} Window Seats</span>
                 </div>
-              )}
 
-              {idealFor.length > 0 && (
-                <div className="p-6 rounded-2xl border bg-card shadow-sm">
-                  <h3 className="text-lg font-bold mb-4">Recommended For</h3>
-                  <div className="flex flex-wrap gap-2">
-                    {idealFor.map((tag: string, idx: number) => (
-                      <Badge key={idx} variant="secondary" className="px-3 py-1.5 text-xs font-medium">
-                        {tag.replace(/-/g, ' ')}
-                      </Badge>
-                    ))}
+                <div className="p-4 rounded-xl border bg-muted/30 text-center">
+                  <Luggage className="h-6 w-6 text-primary mx-auto mb-2" />
+                  <span className="text-xs text-muted-foreground block">Luggage Space</span>
+                  <span className="text-sm font-bold text-foreground">{vehicle.luggageCapacity} Large Bags</span>
+                </div>
+
+                <div className="p-4 rounded-xl border bg-muted/30 text-center">
+                  <ShieldCheck className="h-6 w-6 text-primary mx-auto mb-2" />
+                  <span className="text-xs text-muted-foreground block">Drive System</span>
+                  <span className="text-sm font-bold text-foreground">{specs?.is4WD ? 'Full 4x4 Off-Road' : '2WD High-Clearance'}</span>
+                </div>
+
+                <div className="p-4 rounded-xl border bg-muted/30 text-center">
+                  <Wind className="h-6 w-6 text-primary mx-auto mb-2" />
+                  <span className="text-xs text-muted-foreground block">Climate Control</span>
+                  <span className="text-sm font-bold text-foreground">{specs?.hasAircon ? 'Dual A/C System' : 'Standard Ventilation'}</span>
+                </div>
+
+                {specs?.hasPopUpRoof && (
+                  <div className="p-4 rounded-xl border bg-muted/30 text-center">
+                    <Sparkles className="h-6 w-6 text-primary mx-auto mb-2" />
+                    <span className="text-xs text-muted-foreground block">Roof System</span>
+                    <span className="text-sm font-bold text-foreground">Pop-Up Safari Hatch</span>
                   </div>
+                )}
+
+                {specs?.hasWifi && (
+                  <div className="p-4 rounded-xl border bg-muted/30 text-center">
+                    <Wifi className="h-6 w-6 text-primary mx-auto mb-2" />
+                    <span className="text-xs text-muted-foreground block">Connectivity</span>
+                    <span className="text-sm font-bold text-foreground">Onboard Wi-Fi</span>
+                  </div>
+                )}
+
+                {specs?.hasChargingPorts && (
+                  <div className="p-4 rounded-xl border bg-muted/30 text-center">
+                    <Zap className="h-6 w-6 text-primary mx-auto mb-2" />
+                    <span className="text-xs text-muted-foreground block">Power</span>
+                    <span className="text-sm font-bold text-foreground">USB / Inverter Charging</span>
+                  </div>
+                )}
+
+                {specs?.hasCoolerBox && (
+                  <div className="p-4 rounded-xl border bg-muted/30 text-center">
+                    <Refrigerator className="h-6 w-6 text-primary mx-auto mb-2" />
+                    <span className="text-xs text-muted-foreground block">Beverages</span>
+                    <span className="text-sm font-bold text-foreground">Built-in Cooler Box</span>
+                  </div>
+                )}
+              </div>
+            </section>
+
+            {/* Features & Ideal Use Cases */}
+            {(featuresList.length > 0 || idealFor.length > 0) && (
+              <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+                {featuresList.length > 0 && (
+                  <div className="p-6 rounded-2xl border bg-card shadow-sm">
+                    <h3 className="text-lg font-bold mb-4">Vehicle Highlights & Features</h3>
+                    <ul className="space-y-3">
+                      {featuresList.map((f: any, idx: number) => (
+                        <li key={idx} className="flex items-start gap-2.5 text-sm text-muted-foreground">
+                          <CheckCircle2 className="h-4 w-4 text-primary shrink-0 mt-0.5" />
+                          <span>{f.feature}</span>
+                        </li>
+                      ))}
+                    </ul>
+                  </div>
+                )}
+
+                {idealFor.length > 0 && (
+                  <div className="p-6 rounded-2xl border bg-card shadow-sm">
+                    <h3 className="text-lg font-bold mb-4">Recommended For</h3>
+                    <div className="flex flex-wrap gap-2">
+                      {idealFor.map((tag: string, idx: number) => (
+                        <Badge key={idx} variant="secondary" className="px-3 py-1.5 text-xs font-medium">
+                          {tag.replace(/-/g, ' ')}
+                        </Badge>
+                      ))}
+                    </div>
+                  </div>
+                )}
+              </div>
+            )}
+
+            {/* Main RichText Content */}
+            {vehicle.content && (
+              <section className="prose dark:prose-invert max-w-none">
+                <RichText data={vehicle.content} enableGutter={false} />
+              </section>
+            )}
+
+            {/* Dynamic Layout Blocks if defined */}
+            {vehicle.layout && vehicle.layout.length > 0 && (
+              <RenderBlocks blocks={vehicle.layout} />
+            )}
+
+            {/* Dynamic Vehicle Pricing */}
+            <PricingBlockComponent
+              blockType="pricingBlock"
+              fleet={vehicle.id}
+              title={`${vehicle.title} Hire Rates & Route Packages`}
+              subTitle="Transparent Vehicle Rates"
+            />
+
+            {/* Fleet-Specific FAQs */}
+            <FAQsBlockComponent
+              blockType="faqsBlock"
+              fleet={vehicle.id}
+              title={`Frequently Asked Questions: ${vehicle.title}`}
+              subTitle="Fleet Vehicle FAQs"
+            />
+          </div>
+
+          {/* Sticky Sidebar Column for MD & Above */}
+          <aside className="lg:col-span-4 sticky top-28 space-y-6">
+            <ContentNavigation title="Vehicle Specifications" />
+
+            {/* Quick Vehicle Booking Card */}
+            <div className="p-5 rounded-2xl border border-border bg-card/95 backdrop-blur shadow-sm space-y-4">
+              <div className="flex items-center gap-2 text-primary">
+                <Car className="h-4 w-4" />
+                <h3 className="font-bold text-foreground text-sm">Hire {vehicle.title}</h3>
+              </div>
+              <div className="space-y-2 text-xs text-muted-foreground">
+                <div className="flex justify-between py-1 border-b border-border/60">
+                  <span>Day Rate:</span>
+                  <span className="font-semibold text-foreground">KES {vehicle.baseDayRateKES?.toLocaleString('en-KE')}</span>
                 </div>
-              )}
+                <div className="flex justify-between py-1 border-b border-border/60">
+                  <span>Capacity:</span>
+                  <span className="font-semibold text-foreground">{vehicle.passengerCapacity} Seats</span>
+                </div>
+                <div className="flex justify-between py-1 border-b border-border/60">
+                  <span>Luggage:</span>
+                  <span className="font-semibold text-foreground">{vehicle.luggageCapacity} Bags</span>
+                </div>
+              </div>
+              <Button asChild size="default" className="w-full rounded-xl font-semibold">
+                <Link href={`/search?q=${encodeURIComponent(vehicle.title)}`}>
+                  Book Vehicle <ArrowRight className="ml-2 h-4 w-4" />
+                </Link>
+              </Button>
             </div>
-          </div>
-        </section>
-      )}
-
-      {/* Main Content */}
-      {vehicle.content && (
-        <section className="py-16 bg-background">
-          <div className="container mx-auto px-4 max-w-4xl prose dark:prose-invert">
-            <RichText data={vehicle.content} enableGutter={false} />
-          </div>
-        </section>
-      )}
-
-      {/* Dynamic Vehicle Pricing */}
-      <PricingBlockComponent
-        blockType="pricingBlock"
-        fleet={vehicle.id}
-        title={`${vehicle.title} Hire Rates & Route Packages`}
-        subTitle="Transparent Vehicle Rates"
-      />
-
-      {/* Fleet-Specific FAQs */}
-      <FAQsBlockComponent
-        blockType="faqsBlock"
-        fleet={vehicle.id}
-        title={`Frequently Asked Questions: ${vehicle.title}`}
-        subTitle="Fleet Vehicle FAQs"
-      />
+          </aside>
+        </div>
+      </article>
     </main>
   )
 }
