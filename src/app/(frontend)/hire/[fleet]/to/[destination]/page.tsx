@@ -32,6 +32,8 @@ import {
   AccordionTrigger,
 } from '@/components/ui/accordion'
 
+export const revalidate = 300
+
 export async function generateStaticParams() {
   const payload = await getPayload({ config: configPromise })
   const [fleetResult, destResult] = await Promise.all([

@@ -43,8 +43,11 @@ const getFleetSitemap = unstable_cache(
   ['fleet-sitemap'],
   {
     tags: ['fleet-sitemap'],
+    revalidate: 300,
   },
 )
+
+export const revalidate = 300
 
 export async function GET() {
   const sitemap = await getFleetSitemap()

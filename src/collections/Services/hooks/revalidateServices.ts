@@ -15,8 +15,12 @@ export const revalidateService: CollectionAfterChangeHook<Service> = ({
 
       payload.logger.info(`Revalidating service at path: ${path}`)
 
-      revalidatePath(path)
-      revalidateTag('services-sitemap', 'max')
+      try {
+        revalidatePath(path)
+        revalidateTag('services-sitemap', 'max')
+      } catch (err) {
+        payload.logger.warn(`Could not revalidate path ${path}: ${err}`)
+      }
     }
 
     // If the service was previously published, we need to revalidate the old path
@@ -25,8 +29,12 @@ export const revalidateService: CollectionAfterChangeHook<Service> = ({
 
       payload.logger.info(`Revalidating old service at path: ${oldPath}`)
 
-      revalidatePath(oldPath)
-      revalidateTag('services-sitemap', 'max')
+      try {
+        revalidatePath(oldPath)
+        revalidateTag('services-sitemap', 'max')
+      } catch (err) {
+        payload.logger.warn(`Could not revalidate old path ${oldPath}: ${err}`)
+      }
     }
   }
   return doc
@@ -36,8 +44,10 @@ export const revalidateDelete: CollectionAfterDeleteHook<Service> = ({ doc, req:
   if (!context.disableRevalidate) {
     const path = `/services/${doc?.slug}`
 
-    revalidatePath(path)
-    revalidateTag('services-sitemap', 'max')
+    try {
+      revalidatePath(path)
+      revalidateTag('services-sitemap', 'max')
+    } catch (_) {}
   }
 
   return doc

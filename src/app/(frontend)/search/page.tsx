@@ -29,6 +29,8 @@ import {
   AccordionTrigger,
 } from '@/components/ui/accordion'
 
+export const revalidate = 300
+
 type Args = {
   searchParams: Promise<{
     q?: string

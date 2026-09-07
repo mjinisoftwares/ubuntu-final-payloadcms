@@ -73,8 +73,11 @@ const getHireSitemap = unstable_cache(
   ['hire-sitemap'],
   {
     tags: ['hire-sitemap', 'fleet-sitemap', 'destinations-sitemap'],
+    revalidate: 300,
   },
 )
+
+export const revalidate = 300
 
 export async function GET() {
   const sitemap = await getHireSitemap()

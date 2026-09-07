@@ -13,9 +13,13 @@ export const revalidateFleet: CollectionAfterChangeHook<Fleet> = ({
 
       payload.logger.info(`Revalidating fleet at path: ${path}`)
 
-      revalidatePath(path)
-      revalidateTag('fleet-sitemap', 'max')
-      revalidateTag('hire-sitemap', 'max')
+      try {
+        revalidatePath(path)
+        revalidateTag('fleet-sitemap', 'max')
+        revalidateTag('hire-sitemap', 'max')
+      } catch (err) {
+        payload.logger.warn(`Could not revalidate path ${path}: ${err}`)
+      }
     }
 
     if (previousDoc?._status === 'published' && doc._status !== 'published') {
@@ -23,9 +27,13 @@ export const revalidateFleet: CollectionAfterChangeHook<Fleet> = ({
 
       payload.logger.info(`Revalidating old fleet at path: ${oldPath}`)
 
-      revalidatePath(oldPath)
-      revalidateTag('fleet-sitemap', 'max')
-      revalidateTag('hire-sitemap', 'max')
+      try {
+        revalidatePath(oldPath)
+        revalidateTag('fleet-sitemap', 'max')
+        revalidateTag('hire-sitemap', 'max')
+      } catch (err) {
+        payload.logger.warn(`Could not revalidate old path ${oldPath}: ${err}`)
+      }
     }
   }
   return doc
@@ -34,9 +42,11 @@ export const revalidateFleet: CollectionAfterChangeHook<Fleet> = ({
 export const revalidateDelete: CollectionAfterDeleteHook<Fleet> = ({ doc, req: { context } }) => {
   if (!context.disableRevalidate) {
     const path = `/fleet/${doc?.slug}`
-    revalidatePath(path)
-    revalidateTag('fleet-sitemap', 'max')
-    revalidateTag('hire-sitemap', 'max')
+    try {
+      revalidatePath(path)
+      revalidateTag('fleet-sitemap', 'max')
+      revalidateTag('hire-sitemap', 'max')
+    } catch (_) {}
   }
 
   return doc

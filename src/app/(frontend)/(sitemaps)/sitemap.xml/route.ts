@@ -1,6 +1,8 @@
 import { getServerSideSitemapIndex } from 'next-sitemap'
 import { getServerSideURL } from '@/utilities/getURL'
 
+export const revalidate = 300
+
 export async function GET() {
   const SITE_URL = getServerSideURL()
 

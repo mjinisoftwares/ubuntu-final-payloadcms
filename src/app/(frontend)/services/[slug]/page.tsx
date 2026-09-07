@@ -28,6 +28,8 @@ import ContentNavigation from '@/components/ContentNavigation'
 import { PayloadRedirects } from '@/components/PayloadRedirects'
 import { LivePreviewListener } from '@/components/LivePreviewListener'
 
+export const revalidate = 300
+
 export async function generateStaticParams() {
   const payload = await getPayload({ config: configPromise })
   const services = await payload.find({

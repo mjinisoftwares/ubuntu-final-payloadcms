@@ -16,6 +16,8 @@ import { Badge } from '@/components/ui/badge'
 import { OrganizationSchema, BreadcrumbSchema } from '@/components/Schemas'
 import ContentNavigation from '@/components/ContentNavigation'
 
+export const revalidate = 300
+
 export async function generateStaticParams() {
   const payload = await getPayload({ config: configPromise })
   const destinations = await payload.find({

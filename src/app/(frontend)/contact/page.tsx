@@ -22,8 +22,7 @@ import { OrganizationSchema, BreadcrumbSchema } from '@/components/Schemas'
 import { LivePreviewListener } from '@/components/LivePreviewListener'
 import GoogleMap from '@/components/Maps'
 
-export const dynamic = 'force-dynamic'
-export const revalidate = 0
+export const revalidate = 300
 
 export async function generateMetadata(): Promise<Metadata> {
   return {

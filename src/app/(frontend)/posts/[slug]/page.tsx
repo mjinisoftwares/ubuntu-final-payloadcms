@@ -20,6 +20,8 @@ import { ArticleSchema, BreadcrumbSchema } from '@/components/Schemas'
 import ContentNavigation from '@/components/ContentNavigation'
 import { Button } from '@/components/ui/button'
 
+export const revalidate = 300
+
 export async function generateStaticParams() {
   const payload = await getPayload({ config: configPromise })
   const posts = await payload.find({
