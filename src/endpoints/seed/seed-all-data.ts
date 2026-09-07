@@ -2,6 +2,8 @@ import type { Payload, PayloadRequest, File } from 'payload'
 import fs from 'fs'
 import path from 'path'
 import { fileURLToPath } from 'url'
+import { contactForm as contactFormData } from './contact-form'
+import { contactPage as contactPageData } from './contact-page'
 
 const filename = fileURLToPath(import.meta.url)
 const dirname = path.dirname(filename)
@@ -26,6 +28,8 @@ export const seedAllData = async ({
     services: 0,
     pricing: 0,
     faqs: 0,
+    forms: 0,
+    pages: 0,
   }
 
   // 1. Create Media Items for Featured Images
@@ -380,6 +384,75 @@ export const seedAllData = async ({
       summary.faqs++
     } catch (err: any) {
       payload.logger.error(`Error seeding FAQ ${faq.question}: ${err.message}`)
+    }
+  }
+
+  // 8. Seed Contact Form
+  payload.logger.info('📋 Seeding Contact Form...')
+  let formId: number | string | null = null
+  try {
+    const existingForms = await payload.find({
+      collection: 'forms',
+      where: { title: { equals: contactFormData.title } },
+      limit: 1,
+      req,
+    })
+
+    if (existingForms.docs.length > 0) {
+      formId = existingForms.docs[0].id
+      await payload.update({
+        collection: 'forms',
+        id: formId,
+        data: contactFormData,
+        req,
+      })
+      payload.logger.info(`Updated existing contact form with ID: ${formId}`)
+    } else {
+      const createdForm = await payload.create({
+        collection: 'forms',
+        data: contactFormData,
+        req,
+      })
+      formId = createdForm.id
+      payload.logger.info(`Created new contact form with ID: ${formId}`)
+    }
+    summary.forms++
+  } catch (err: any) {
+    payload.logger.error(`Error seeding contact form: ${err.message}`)
+  }
+
+  // 9. Seed Contact Page
+  payload.logger.info('📄 Seeding Contact Page...')
+  if (formId) {
+    try {
+      const existingPage = await payload.find({
+        collection: 'pages',
+        where: { slug: { equals: 'contact' } },
+        limit: 1,
+        req,
+      })
+
+      const pageData = contactPageData({ contactFormId: formId })
+
+      if (existingPage.docs.length > 0) {
+        await payload.update({
+          collection: 'pages',
+          id: existingPage.docs[0].id,
+          data: pageData,
+          req,
+        })
+        payload.logger.info(`Updated existing contact page (ID: ${existingPage.docs[0].id})`)
+      } else {
+        const createdPage = await payload.create({
+          collection: 'pages',
+          data: pageData,
+          req,
+        })
+        payload.logger.info(`Created contact page (ID: ${createdPage.id})`)
+      }
+      summary.pages++
+    } catch (err: any) {
+      payload.logger.error(`Error seeding contact page: ${err.message}`)
     }
   }
 

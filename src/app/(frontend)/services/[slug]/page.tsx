@@ -208,12 +208,12 @@ export default async function ServicePage({ params: paramsPromise }: Props) {
 
             {/* ================= IMAGE — 50% ================= */}
             {service.heroImage && typeof service.heroImage === 'object' && (
-              <div className="flex h-full min-h-[320px] items-center justify-center lg:min-h-[460px]">
-                <Media
-                  resource={service.heroImage}
-                  className="h-auto max-h-[420px] w-full max-w-[500px] object-contain"
-                />
-              </div>
+                <div className="flex h-full min-h-[320px] items-center justify-center lg:min-h-[460px]">
+                  <Media
+                    resource={service.heroImage}
+                    className="h-auto max-h-[420px] w-full max-w-[500px] object-contain"
+                  />
+                </div>
             )}
           </div>
         </div>

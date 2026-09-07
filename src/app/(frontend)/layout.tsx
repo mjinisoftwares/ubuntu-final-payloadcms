@@ -13,6 +13,7 @@ import './globals.css'
 import { getServerSideURL } from '@/utilities/getURL'
 import Script from 'next/script'
 import GoogleMap from '@/components/Maps'
+import { FloatingWhatsApp } from '@/components/FloatingWhatsApp'
 
 export default async function RootLayout({ children }: { children: React.ReactNode }) {
   return (
@@ -27,6 +28,7 @@ export default async function RootLayout({ children }: { children: React.ReactNo
         {children}
         <GoogleMap />
         <Footer />
+        <FloatingWhatsApp />
         <Script src="https://elfsightcdn.com/platform.js" strategy="afterInteractive" />
       </body>
     </html>
