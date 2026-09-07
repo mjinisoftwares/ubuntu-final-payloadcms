@@ -20,26 +20,11 @@ import { ArticleSchema, BreadcrumbSchema } from '@/components/Schemas'
 import ContentNavigation from '@/components/ContentNavigation'
 import { Button } from '@/components/ui/button'
 
+export const dynamicParams = true
 export const revalidate = 300
 
 export async function generateStaticParams() {
-  const payload = await getPayload({ config: configPromise })
-  const posts = await payload.find({
-    collection: 'posts',
-    draft: false,
-    limit: 1000,
-    overrideAccess: false,
-    pagination: false,
-    select: {
-      slug: true,
-    },
-  })
-
-  const params = posts.docs.map(({ slug }) => {
-    return { slug }
-  })
-
-  return params
+  return []
 }
 
 type Args = {

@@ -16,23 +16,11 @@ import { Badge } from '@/components/ui/badge'
 import { OrganizationSchema, BreadcrumbSchema } from '@/components/Schemas'
 import ContentNavigation from '@/components/ContentNavigation'
 
+export const dynamicParams = true
 export const revalidate = 300
 
 export async function generateStaticParams() {
-  const payload = await getPayload({ config: configPromise })
-  const destinations = await payload.find({
-    collection: 'destinations',
-    draft: false,
-    limit: 1000,
-    select: { slug: true },
-  })
-
-  return destinations.docs
-    .map((doc) => {
-      const slug = typeof doc.slug === 'string' ? doc.slug : (doc.slug as any)?.slug
-      return typeof slug === 'string' && slug.length > 0 ? { slug } : null
-    })
-    .filter(Boolean) as { slug: string }[]
+  return []
 }
 
 type Props = {

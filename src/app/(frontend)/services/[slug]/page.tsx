@@ -28,25 +28,11 @@ import ContentNavigation from '@/components/ContentNavigation'
 import { PayloadRedirects } from '@/components/PayloadRedirects'
 import { LivePreviewListener } from '@/components/LivePreviewListener'
 
+export const dynamicParams = true
 export const revalidate = 300
 
 export async function generateStaticParams() {
-  const payload = await getPayload({ config: configPromise })
-  const services = await payload.find({
-    collection: 'services',
-    draft: false,
-    limit: 1000,
-    overrideAccess: false,
-    pagination: false,
-    select: { slug: true },
-  })
-
-  return services.docs
-    .map((doc) => {
-      const slug = typeof doc.slug === 'string' ? doc.slug : (doc.slug as any)?.slug
-      return typeof slug === 'string' && slug.length > 0 ? { slug } : null
-    })
-    .filter(Boolean) as { slug: string }[]
+  return []
 }
 
 type Props = {

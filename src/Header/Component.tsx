@@ -3,21 +3,34 @@ import type { Header as HeaderType } from '@/payload-types'
 import { HeaderClient } from './Component.client'
 import { getPayload } from 'payload'
 import configPromise from '@payload-config'
+import { unstable_cache } from 'next/cache'
 
-export async function Header() {
-  try {
+const getFullHeaderData = unstable_cache(
+  async (): Promise<HeaderType> => {
     const getHeader = getCachedGlobal('header', 1)
-    const headerData = await getHeader() as HeaderType
+    const rawHeaderData = ((await getHeader()) as HeaderType) || {
+      id: 0,
+      navItems: [],
+      createdAt: new Date().toISOString(),
+      updatedAt: new Date().toISOString(),
+    }
+    const headerData = JSON.parse(JSON.stringify(rawHeaderData)) as HeaderType
 
     const payload = await getPayload({ config: configPromise })
 
     if (headerData.navItems) {
       for (const item of headerData.navItems) {
-        if (item.label.toLowerCase() === 'destinations') {
+        if (item.label?.toLowerCase() === 'destinations') {
           const destinationsReq = await payload.find({
             collection: 'destinations',
             limit: 50,
             depth: 0,
+            select: {
+              title: true,
+              slug: true,
+              subTitle: true,
+              summary: true,
+            },
           })
 
           const mappedDestinations = destinationsReq.docs.map((doc) => ({
@@ -28,17 +41,20 @@ export async function Header() {
             newTab: false,
           }))
 
-          item.children = [
-            ...(item.children || []),
-            ...mappedDestinations,
-          ]
+          item.children = [...(item.children || []), ...mappedDestinations]
         }
 
-        if (item.label.toLowerCase() === 'services') {
+        if (item.label?.toLowerCase() === 'services') {
           const servicesReq = await payload.find({
             collection: 'services',
             limit: 50,
             depth: 0,
+            select: {
+              title: true,
+              slug: true,
+              subTitle: true,
+              summary: true,
+            },
           })
 
           const mappedServices = servicesReq.docs.map((doc) => ({
@@ -49,17 +65,20 @@ export async function Header() {
             newTab: false,
           }))
 
-          item.children = [
-            ...(item.children || []),
-            ...mappedServices,
-          ]
+          item.children = [...(item.children || []), ...mappedServices]
         }
 
-        if (item.label.toLowerCase() === 'fleet' || item.label.toLowerCase() === 'our fleet') {
+        if (item.label?.toLowerCase() === 'fleet' || item.label?.toLowerCase() === 'our fleet') {
           const fleetReq = await payload.find({
             collection: 'fleet',
             limit: 50,
             depth: 0,
+            select: {
+              title: true,
+              slug: true,
+              subTitle: true,
+              summary: true,
+            },
           })
 
           const mappedFleet = fleetReq.docs.map((doc) => ({
@@ -70,14 +89,23 @@ export async function Header() {
             newTab: false,
           }))
 
-          item.children = [
-            ...(item.children || []),
-            ...mappedFleet,
-          ]
+          item.children = [...(item.children || []), ...mappedFleet]
         }
       }
     }
 
+    return headerData
+  },
+  ['header-with-dropdowns'],
+  {
+    tags: ['global_header', 'destinations-sitemap', 'services-sitemap', 'fleet-sitemap'],
+    revalidate: 300,
+  },
+)
+
+export async function Header() {
+  try {
+    const headerData = await getFullHeaderData()
     return <HeaderClient data={headerData} />
   } catch (error) {
     console.error('Failed to fetch header data:', error)

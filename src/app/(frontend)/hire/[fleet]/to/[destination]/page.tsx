@@ -32,29 +32,11 @@ import {
   AccordionTrigger,
 } from '@/components/ui/accordion'
 
+export const dynamicParams = true
 export const revalidate = 300
 
 export async function generateStaticParams() {
-  const payload = await getPayload({ config: configPromise })
-  const [fleetResult, destResult] = await Promise.all([
-    payload.find({ collection: 'fleet', draft: false, limit: 50, select: { slug: true } }),
-    payload.find({ collection: 'destinations', draft: false, limit: 50, select: { slug: true } }),
-  ])
-
-  const params: { fleet: string; destination: string }[] = []
-
-  for (const f of fleetResult.docs) {
-    const fSlug = typeof f.slug === 'string' ? f.slug : (f.slug as any)?.slug
-    if (!fSlug) continue
-    for (const d of destResult.docs) {
-      const dSlug = typeof d.slug === 'string' ? d.slug : (d.slug as any)?.slug
-      if (dSlug) {
-        params.push({ fleet: fSlug, destination: dSlug })
-      }
-    }
-  }
-
-  return params
+  return []
 }
 
 type Props = {
