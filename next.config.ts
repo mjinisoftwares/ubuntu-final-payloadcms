@@ -51,6 +51,10 @@ const nextConfig: NextConfig = {
     return webpackConfig
   },
   reactStrictMode: true,
+  staticPageGenerationTimeout: 180,
+  experimental: {
+    cpus: 2,
+  },
   redirects,
   turbopack: {
     root: path.resolve(dirname),

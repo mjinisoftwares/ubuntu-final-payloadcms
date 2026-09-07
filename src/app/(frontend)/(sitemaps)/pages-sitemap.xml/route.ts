@@ -31,6 +31,9 @@ const getPagesSitemap = unstable_cache(
 
     const defaultSitemap = [
       { loc: `${SITE_URL}/`, lastmod: dateFallback },
+      { loc: `${SITE_URL}/contact`, lastmod: dateFallback },
+      { loc: `${SITE_URL}/privacy-policy`, lastmod: dateFallback },
+      { loc: `${SITE_URL}/terms-of-service`, lastmod: dateFallback },
       { loc: `${SITE_URL}/search`, lastmod: dateFallback },
       { loc: `${SITE_URL}/posts`, lastmod: dateFallback },
       { loc: `${SITE_URL}/destinations`, lastmod: dateFallback },
