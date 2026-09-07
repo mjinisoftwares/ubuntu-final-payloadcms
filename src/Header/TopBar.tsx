@@ -9,17 +9,17 @@ interface TopBarProps {
 
 const SOCIAL_LINKS = [
   {
-    href: 'https://facebook.com/mjinidigital',
+    href: 'https://www.facebook.com/ubuntu254',
     label: 'Follow us on Facebook',
     Icon: Facebook,
   },
   {
-    href: 'https://x.com/mjinidigital',
-    label: 'Follow us on X (Twitter)',
+    href: 'https://www.threads.com/@ubuntu_logistics',
+    label: 'Follow us on threads',
     Icon: Twitter,
   },
   {
-    href: 'https://www.instagram.com/mjinidigital/',
+    href: 'https://www.instagram.com/ubuntu_logistics/',
     label: 'Follow us on Instagram',
     Icon: Instagram,
   },

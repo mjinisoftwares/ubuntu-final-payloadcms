@@ -34,18 +34,22 @@ const COMPANY_LINKS = [
 
 const SOCIAL_LINKS = [
   {
-    href: 'https://facebook.com/ubuntulogistics',
+    href: 'https://www.facebook.com/ubuntu254',
     label: 'Follow Ubuntu Logistics on Facebook',
     Icon: Facebook,
   },
-  { href: 'https://x.com/ubuntulogistics', label: 'Follow Ubuntu Logistics on X', Icon: Twitter },
   {
-    href: 'https://www.instagram.com/ubuntulogistics/',
+    href: 'https://www.facebook.com/ubuntu254',
+    label: 'Follow Ubuntu Logistics on X',
+    Icon: Twitter,
+  },
+  {
+    href: 'https://www.instagram.com/ubuntu_logistics/',
     label: 'Follow Ubuntu Logistics on Instagram',
     Icon: Instagram,
   },
   {
-    href: 'https://linkedin.com/company/ubuntulogistics',
+    href: 'https://www.facebook.com/ubuntu254',
     label: 'Ubuntu Logistics on LinkedIn',
     Icon: Linkedin,
   },
