@@ -4,18 +4,18 @@ import configPromise from '@payload-config'
 import { getPayload } from 'payload'
 import { draftMode } from 'next/headers'
 import Link from 'next/link'
-import { 
-  Phone, 
-  Mail, 
-  MapPin, 
-  Clock, 
-  ShieldCheck, 
-  MessageCircle, 
-  Send, 
-  Car, 
-  Compass, 
+import {
+  Phone,
+  Mail,
+  MapPin,
+  Clock,
+  ShieldCheck,
+  MessageCircle,
+  Send,
+  Car,
+  Compass,
   PlaneTakeoff,
-  CheckCircle2
+  CheckCircle2,
 } from 'lucide-react'
 import { FormBlock } from '@/blocks/Form/Component'
 import { OrganizationSchema, BreadcrumbSchema } from '@/components/Schemas'
@@ -31,7 +31,8 @@ export async function generateMetadata(): Promise<Metadata> {
       'Contact Ubuntu Logistics in Nairobi, Kenya. Call +254 728 798 580 or email info@ubuntulogistics.co.ke. Available 24/7 for airport transfers, 4x4 safari transport, corporate shuttles, and car hire.',
     openGraph: {
       title: 'Contact Ubuntu Logistics Kenya',
-      description: 'Get in touch for 24/7 airport transfers, custom safari transport, corporate car hire, or fleet logistics.',
+      description:
+        'Get in touch for 24/7 airport transfers, custom safari transport, corporate car hire, or fleet logistics.',
       url: 'https://www.ubuntulogistics.co.ke/contact',
     },
   }
@@ -103,7 +104,9 @@ export default async function ContactPage() {
               Contact Ubuntu Logistics
             </h1>
             <p className="text-base sm:text-lg text-zinc-300 leading-relaxed">
-              East Africa’s premier transport, luxury safari, and car hire partner. We are ready to assist you with airport pick-ups, overland 4x4 safaris, corporate shuttles, or personalized travel itineraries across Kenya.
+              East Africa’s premier transport, luxury safari, and car hire partner. We are ready to
+              assist you with airport pick-ups, overland 4x4 safaris, corporate shuttles, or
+              personalized travel itineraries across Kenya.
             </p>
           </div>
         </div>
@@ -112,7 +115,6 @@ export default async function ContactPage() {
       {/* Main Content Grid: Info on Left, Payload CMS Form on Right */}
       <div className="container mx-auto px-4">
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-12 items-start">
-          
           {/* Left Column: Direct Contact Details & Trust */}
           <div className="lg:col-span-5 space-y-6">
             <div className="bg-card border border-border rounded-2xl p-6 sm:p-8 shadow-sm">
@@ -130,14 +132,14 @@ export default async function ContactPage() {
                     <p className="text-xs font-semibold uppercase tracking-wider text-muted-foreground mb-1">
                       Call / Hotline (24/7)
                     </p>
-                    <a 
-                      href="tel:+254728798580" 
+                    <a
+                      href="tel:+254728798580"
                       className="text-base font-semibold text-foreground hover:text-primary transition-colors block"
                     >
                       +254 728 798 580
                     </a>
-                    <a 
-                      href="tel:+25472879858" 
+                    <a
+                      href="tel:+25472879858"
                       className="text-sm text-muted-foreground hover:text-primary transition-colors block"
                     >
                       +254 728 79858
@@ -154,8 +156,8 @@ export default async function ContactPage() {
                     <p className="text-xs font-semibold uppercase tracking-wider text-muted-foreground mb-1">
                       Email Inquiries
                     </p>
-                    <a 
-                      href="mailto:info@ubuntulogistics.co.ke" 
+                    <a
+                      href="mailto:info@ubuntulogistics.co.ke"
                       className="text-base font-semibold text-foreground hover:text-primary transition-colors block"
                     >
                       info@ubuntulogistics.co.ke
@@ -175,8 +177,8 @@ export default async function ContactPage() {
                     <p className="text-xs font-semibold uppercase tracking-wider text-muted-foreground mb-1">
                       Instant WhatsApp Chat
                     </p>
-                    <a 
-                      href="https://wa.me/254728798580?text=Hello%20Ubuntu%20Logistics%2C%20I%20would%20like%20to%20inquire%20about%20your%20services." 
+                    <a
+                      href="https://wa.me/254728798580?text=Hello%20Ubuntu%20Logistics%2C%20I%20would%20like%20to%20inquire%20about%20your%20services."
                       target="_blank"
                       rel="noopener noreferrer"
                       className="inline-flex items-center gap-2 text-sm font-semibold text-emerald-600 hover:text-emerald-500 transition-colors"
@@ -198,9 +200,7 @@ export default async function ContactPage() {
                     <p className="text-sm font-medium text-foreground">
                       North Airport Road 18114-00200
                     </p>
-                    <p className="text-xs text-muted-foreground">
-                      Embakasi, Nairobi, Kenya
-                    </p>
+                    <p className="text-xs text-muted-foreground">Embakasi, Nairobi, Kenya</p>
                   </div>
                 </div>
 
@@ -253,15 +253,22 @@ export default async function ContactPage() {
               <ul className="space-y-3 text-xs text-zinc-300">
                 <li className="flex items-start gap-2">
                   <CheckCircle2 className="w-4 h-4 text-emerald-400 shrink-0 mt-0.5" />
-                  <span>Licensed & compliant KATO tour operator with insured commercial passenger fleet.</span>
+                  <span>
+                    Licensed & compliant KATO tour operator with insured commercial passenger fleet.
+                  </span>
                 </li>
                 <li className="flex items-start gap-2">
                   <CheckCircle2 className="w-4 h-4 text-emerald-400 shrink-0 mt-0.5" />
-                  <span>Professional, vetted, English-speaking driver-guides with vast safari knowledge.</span>
+                  <span>
+                    Professional, vetted, English-speaking driver-guides with vast safari knowledge.
+                  </span>
                 </li>
                 <li className="flex items-start gap-2">
                   <CheckCircle2 className="w-4 h-4 text-emerald-400 shrink-0 mt-0.5" />
-                  <span>24/7 real-time GPS tracking and emergency roadside assistance across East Africa.</span>
+                  <span>
+                    24/7 real-time GPS tracking and emergency roadside assistance across East
+                    Africa.
+                  </span>
                 </li>
               </ul>
             </div>
@@ -278,32 +285,30 @@ export default async function ContactPage() {
                   Send Us a Message
                 </h2>
                 <p className="text-sm text-muted-foreground">
-                  Fill out the form below and our logistics coordinator will get back to you with a tailored quote within 30 minutes.
+                  Fill out the form below and our logistics coordinator will get back to you with a
+                  tailored quote within 30 minutes.
                 </p>
               </div>
 
               {formDoc ? (
-                <FormBlock 
-                  enableIntro={false} 
-                  form={formDoc} 
-                />
+                <FormBlock enableIntro={false} form={formDoc} />
               ) : (
                 /* Fallback Form in case Payload seed is pending or warming up */
-                <form 
-                  action="mailto:info@ubuntulogistics.co.ke" 
-                  method="post" 
+                <form
+                  action="mailto:info@ubuntulogistics.co.ke"
+                  method="post"
                   encType="text/plain"
                   className="space-y-4"
                 >
-                  <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
+                  <div className="">
                     <div>
                       <label className="block text-xs font-medium text-foreground mb-1.5">
                         Full Name *
                       </label>
-                      <input 
-                        type="text" 
-                        required 
-                        name="full-name" 
+                      <input
+                        type="text"
+                        required
+                        name="full-name"
                         placeholder="e.g. John Doe"
                         className="w-full px-3.5 py-2.5 rounded-lg border border-border bg-background text-sm focus:outline-none focus:ring-2 focus:ring-primary"
                       />
@@ -312,10 +317,10 @@ export default async function ContactPage() {
                       <label className="block text-xs font-medium text-foreground mb-1.5">
                         Email Address *
                       </label>
-                      <input 
-                        type="email" 
-                        required 
-                        name="email" 
+                      <input
+                        type="email"
+                        required
+                        name="email"
                         placeholder="john@example.com"
                         className="w-full px-3.5 py-2.5 rounded-lg border border-border bg-background text-sm focus:outline-none focus:ring-2 focus:ring-primary"
                       />
@@ -327,10 +332,10 @@ export default async function ContactPage() {
                       <label className="block text-xs font-medium text-foreground mb-1.5">
                         Phone Number *
                       </label>
-                      <input 
-                        type="tel" 
-                        required 
-                        name="phone" 
+                      <input
+                        type="tel"
+                        required
+                        name="phone"
                         placeholder="+254 700 000 000"
                         className="w-full px-3.5 py-2.5 rounded-lg border border-border bg-background text-sm focus:outline-none focus:ring-2 focus:ring-primary"
                       />
@@ -339,7 +344,7 @@ export default async function ContactPage() {
                       <label className="block text-xs font-medium text-foreground mb-1.5">
                         Service of Interest
                       </label>
-                      <select 
+                      <select
                         name="service"
                         className="w-full px-3.5 py-2.5 rounded-lg border border-border bg-background text-sm focus:outline-none focus:ring-2 focus:ring-primary"
                       >
@@ -357,17 +362,17 @@ export default async function ContactPage() {
                     <label className="block text-xs font-medium text-foreground mb-1.5">
                       Trip Details / Message *
                     </label>
-                    <textarea 
-                      required 
+                    <textarea
+                      required
                       rows={5}
-                      name="message" 
+                      name="message"
                       placeholder="Please share pickup date, destination, group size, and any specific preferences..."
                       className="w-full px-3.5 py-2.5 rounded-lg border border-border bg-background text-sm focus:outline-none focus:ring-2 focus:ring-primary"
                     />
                   </div>
 
-                  <button 
-                    type="submit" 
+                  <button
+                    type="submit"
                     className="w-full inline-flex items-center justify-center gap-2 px-6 py-3 rounded-lg bg-primary text-primary-foreground font-semibold text-sm hover:opacity-95 transition-opacity"
                   >
                     <Send className="w-4 h-4" /> Send Inquiry to Ubuntu Logistics
@@ -376,7 +381,6 @@ export default async function ContactPage() {
               )}
             </div>
           </div>
-
         </div>
 
         {/* Office Location Map Section */}
@@ -389,7 +393,9 @@ export default async function ContactPage() {
               Visit Our Operations Hub
             </h2>
             <p className="text-sm text-muted-foreground">
-              Conveniently positioned along North Airport Road for rapid dispatch to Jomo Kenyatta International Airport (JKIA), Wilson Airport, and the Nairobi Central Business District.
+              Conveniently positioned along North Airport Road for rapid dispatch to Jomo Kenyatta
+              International Airport (JKIA), Wilson Airport, and the Nairobi Central Business
+              District.
             </p>
           </div>
           <div className="rounded-2xl overflow-hidden shadow-lg border border-border">
