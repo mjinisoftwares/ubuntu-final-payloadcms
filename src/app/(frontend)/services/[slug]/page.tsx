@@ -376,14 +376,7 @@ export default async function ServicePage({ params: paramsPromise }: Props) {
               </section>
             )}
 
-            {/* Dynamic Service Pricing */}
-            <PricingBlockComponent
-              blockType="pricingBlock"
-              service={service.id}
-              title={`${service.title} Rates & Packages`}
-              subTitle="Transparent Pricing"
-            />
-
+          
             {/* Dynamic Service FAQs */}
             <FAQsBlockComponent
               blockType="faqsBlock"
