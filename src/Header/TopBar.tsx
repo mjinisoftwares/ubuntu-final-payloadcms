@@ -39,7 +39,7 @@ export function TopBar({ hidden }: TopBarProps) {
           <span className="hidden sm:inline">info@ubuntulogistics.co.ke</span>
 
           <Phone className="w-3.5 h-3.5 shrink-0" />
-          <span className="hidden sm:inline">+254 728 79858</span>
+          <span className="hidden sm:inline">+254 728 798 580</span>
         </div>
 
         {/* ── RIGHT: location + socials ── */}
