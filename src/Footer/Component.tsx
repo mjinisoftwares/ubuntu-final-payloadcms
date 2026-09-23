@@ -177,7 +177,7 @@ export async function Footer() {
             </li>
             <li>
               <a
-                href="tel:+25472879858"
+                href="tel:+254728798580"
                 className="flex items-start gap-3 text-sm text-zinc-400 hover:text-white transition-colors group"
               >
                 <Phone className="w-4 h-4 text-white shrink-0 mt-0.5" />
