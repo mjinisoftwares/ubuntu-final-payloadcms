@@ -138,12 +138,7 @@ export default async function ContactPage() {
                     >
                       +254 728 798 580
                     </a>
-                    <a
-                      href="tel:+25472879858"
-                      className="text-sm text-muted-foreground hover:text-primary transition-colors block"
-                    >
-                      +254 728 79858
-                    </a>
+                   
                   </div>
                 </div>
 
