@@ -239,58 +239,7 @@ export default async function DestinationPage({ params }: Props) {
               <RenderBlocks blocks={destination.layout} />
             )}
 
-            {/* Recommended Fleet for this Destination */}
-            {recommendedFleet.length > 0 && (
-              <section className="rounded-2xl border bg-muted/20 p-6 sm:p-8">
-                <div className="mb-8">
-                  <Badge variant="outline" className="mb-2">Vehicle Recommendations</Badge>
-                  <h2 className="text-2xl sm:text-3xl font-bold tracking-tight">
-                    Recommended Fleet for {destination.title}
-                  </h2>
-                  <p className="mt-2 text-sm text-muted-foreground">
-                    Specially selected based on the road terrain ({destination.roadCondition?.replace(/-/g, ' ')}), passenger comfort, and luggage space.
-                  </p>
-                </div>
-
-                <div className="grid grid-cols-1 sm:grid-cols-2 gap-6">
-                  {recommendedFleet.map((vehicle: any) => {
-                    if (typeof vehicle !== 'object') return null
-                    return (
-                      <div key={vehicle.id} className="rounded-2xl border bg-card p-5 shadow-sm hover:shadow-md transition-all flex flex-col justify-between">
-                        <div>
-                          {vehicle.featuredImage && typeof vehicle.featuredImage === 'object' && (
-                            <div className="rounded-xl overflow-hidden mb-4 h-44 bg-muted">
-                              <Media resource={vehicle.featuredImage} className="w-full h-full object-cover" />
-                            </div>
-                          )}
-                          <h3 className="text-base font-bold">{vehicle.title}</h3>
-                          <p className="text-xs text-muted-foreground mt-1 line-clamp-2">{vehicle.summary}</p>
-                          
-                          <div className="mt-4 flex items-center gap-3 text-xs text-muted-foreground border-y py-2.5">
-                            <span className="flex items-center gap-1">
-                              <Users className="h-3.5 w-3.5 text-primary" /> {vehicle.passengerCapacity} Seats
-                            </span>
-                            <span className="flex items-center gap-1">
-                              <Luggage className="h-3.5 w-3.5 text-primary" /> {vehicle.luggageCapacity} Bags
-                            </span>
-                          </div>
-                        </div>
-
-                        <div className="mt-4">
-                          <Button asChild size="sm" variant="default" className="rounded-lg w-full font-semibold">
-                            <Link href={`/hire/${vehicle.slug}/to/${destination.slug}`}>
-                              Book {vehicle.title} to {destination.title}
-                            </Link>
-                          </Button>
-                        </div>
-                      </div>
-                    )
-                  })}
-                </div>
-              </section>
-            )}
-
-          
+                    
 
             {/* Destination-Specific FAQs */}
             <FAQsBlockComponent
