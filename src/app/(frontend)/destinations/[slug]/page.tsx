@@ -290,13 +290,7 @@ export default async function DestinationPage({ params }: Props) {
               </section>
             )}
 
-            {/* Dynamic Route Pricing */}
-            <PricingBlockComponent
-              blockType="pricingBlock"
-              destination={destination.id}
-              title={`Transport & Transfer Rates to ${destination.title}`}
-              subTitle="Transparent Route Pricing"
-            />
+          
 
             {/* Destination-Specific FAQs */}
             <FAQsBlockComponent
