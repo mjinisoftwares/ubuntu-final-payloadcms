@@ -3,8 +3,8 @@
 import React, { useEffect, useState } from 'react'
 import { ChevronUp, MessageCircle, Phone, X } from 'lucide-react'
 
-const WHATSAPP_NUMBER = '254728798580'
-const CALL_NUMBER = '+254728798580'
+const WHATSAPP_NUMBER = '254728798589'
+const CALL_NUMBER = '+254728798589'
 
 const WHATSAPP_MESSAGE = encodeURIComponent(
   'Hello Ubuntu Logistics! I would like to inquire about your transport services.',
