@@ -205,11 +205,11 @@ export function MobileMenu({ items }: MobileMenuProps) {
               {/* Quick Contact Information */}
               <div className="pt-2 flex flex-col space-y-2 text-xs text-muted-foreground border-t border-border/40">
                 <a
-                  href="tel:+254729396862"
+                  href="tel:+254728798589"
                   className="flex items-center gap-2 hover:text-primary transition-colors"
                 >
                   <Phone className="w-3.5 h-3.5 text-primary" />
-                  <span>+254 734 003 111</span>
+                  <span>+254 728 798 589</span>
                 </a>
                 <a
                   href="mailto:info@ubuntulogistics.co.ke"
