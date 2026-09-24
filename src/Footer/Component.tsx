@@ -169,7 +169,7 @@ export async function Footer() {
                 <Phone className="w-4 h-4 text-white shrink-0 mt-0.5" />
                 <span>
                   <span className="block font-medium text-zinc-200 group-hover:text-white">
-                    +254 728 798 580
+                    +254 728 798 589
                   </span>
                   <span className="text-xs text-zinc-500">24/7 Operations Hotline</span>
                 </span>
@@ -177,13 +177,13 @@ export async function Footer() {
             </li>
             <li>
               <a
-                href="tel:+254728798580"
+                href="tel:+254728798589"
                 className="flex items-start gap-3 text-sm text-zinc-400 hover:text-white transition-colors group"
               >
                 <Phone className="w-4 h-4 text-white shrink-0 mt-0.5" />
                 <span>
                   <span className="block font-medium text-zinc-200 group-hover:text-white">
-                    +254 728 798580
+                    +254 728 798589
                   </span>
                   <span className="text-xs text-zinc-500">Secondary Line</span>
                 </span>
