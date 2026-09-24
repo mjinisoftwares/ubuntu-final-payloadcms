@@ -133,10 +133,10 @@ export default async function ContactPage() {
                       Call / Hotline (24/7)
                     </p>
                     <a
-                      href="tel:+254728798580"
+                      href="tel:+254728798589"
                       className="text-base font-semibold text-foreground hover:text-primary transition-colors block"
                     >
-                      +254 728 798 580
+                      +254 728 798 589
                     </a>
                    
                   </div>
@@ -178,7 +178,7 @@ export default async function ContactPage() {
                       rel="noopener noreferrer"
                       className="inline-flex items-center gap-2 text-sm font-semibold text-emerald-600 hover:text-emerald-500 transition-colors"
                     >
-                      <span>Chat on WhatsApp (+254 728 798 580)</span>
+                      <span>Chat on WhatsApp (+254728798589)</span>
                     </a>
                   </div>
                 </div>
