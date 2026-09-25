@@ -87,7 +87,7 @@ export const PricingCollectionArchive: React.FC<PricingCollectionArchiveProps> =
 
               {pricing.priceKES && (
                 <div className="text-lg font-bold text-primary">
-                  KES {pricing.priceKES.toLocaleString()} {pricing.billingUnit ? `/ ${pricing.billingUnit.replace(/_/g, ' ')}` : ''}
+                  KES {pricing.priceKES.toLocaleString()} {pricing.billingUnit}
                 </div>
               )}
 
